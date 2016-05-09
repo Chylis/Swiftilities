@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		5F42572F1CE089A000D53A60 /* FatFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework" */;
+			buildPhases = (
+				5F4257331CE089B100D53A60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = FatFramework;
+			productName = FatFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		5F378A7E1CDF588D00BD9557 /* Array+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7C1CDF588D00BD9557 /* Array+Swiftilities.swift */; };
 		5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */; };
@@ -175,6 +189,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Magnus Eriksson";
 				TargetAttributes = {
+					5F42572F1CE089A000D53A60 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					5F7E35A41CDDD803002FF0EB = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -197,6 +214,7 @@
 			targets = (
 				5F7E35A41CDDD803002FF0EB /* Swiftilities */,
 				5F7E35AE1CDDD803002FF0EB /* SwiftilitiesTests */,
+				5F42572F1CE089A000D53A60 /* FatFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -217,6 +235,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F4257331CE089B100D53A60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build \\\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5F7E35A01CDDD803002FF0EB /* Sources */ = {
@@ -252,6 +286,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5F4257301CE089A000D53A60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5F4257311CE089A000D53A60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5F7E35B71CDDD803002FF0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -405,6 +453,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F4257301CE089A000D53A60 /* Debug */,
+				5F4257311CE089A000D53A60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5F7E359F1CDDD802002FF0EB /* Build configuration list for PBXProject "Swiftilities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
