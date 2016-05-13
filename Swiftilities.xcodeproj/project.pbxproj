@@ -31,6 +31,7 @@
 		5F7E35A91CDDD803002FF0EB /* Swiftilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7E35A81CDDD803002FF0EB /* Swiftilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F7E35B01CDDD803002FF0EB /* Swiftilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */; };
 		5F7E35B51CDDD803002FF0EB /* SwiftilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E35B41CDDD803002FF0EB /* SwiftilitiesTests.swift */; };
+		5FF55E281CE5C8F000387D0A /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5F7E35AF1CDDD803002FF0EB /* SwiftilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7E35B41CDDD803002FF0EB /* SwiftilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftilitiesTests.swift; sourceTree = "<group>"; };
 		5F7E35B61CDDD803002FF0EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FF55E271CE5C8F000387D0A /* NibContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */,
 				5F378A861CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift */,
 				5F378A881CDF5E4900BD9557 /* NSData+Swiftilities.swift */,
+				5FF55E271CE5C8F000387D0A /* NibContainerView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF55E281CE5C8F000387D0A /* NibContainerView.swift in Sources */,
 				5F378A871CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift in Sources */,
 				5F378A811CDF58FD00BD9557 /* Dispatch.swift in Sources */,
 				5F378A831CDF5CF400BD9557 /* UIColor+Swiftilities.swift in Sources */,
@@ -460,6 +464,7 @@
 				5F4257311CE089A000D53A60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5F7E359F1CDDD802002FF0EB /* Build configuration list for PBXProject "Swiftilities" */ = {
 			isa = XCConfigurationList;
