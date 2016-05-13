@@ -8,12 +8,12 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     
     /**
      Creates an image from the view
      */
-    public static func fromView(view: UIView) -> UIImage {
+    static func fromView(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
         view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let img = UIGraphicsGetImageFromCurrentImageContext()

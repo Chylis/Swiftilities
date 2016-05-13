@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension UIViewController {
+public extension UIViewController {
     
     /**
      Utility method for simple dismissal
      */
-    public func dismiss(animated: Bool = true) {
+    func dismiss(animated: Bool = true) {
         presentingViewController?.dismissViewControllerAnimated(animated, completion: nil)
     }
     
@@ -21,13 +21,13 @@ extension UIViewController {
     /**
      Travels the chain of presented view controllers and returns the topmost view controller
      */
-    public func currentlyPresentedViewController() -> UIViewController {
-        var currentlyPresented: UIViewController? = self
+    func currentlyPresentedViewController() -> UIViewController {
+        var current = self
         
-        while currentlyPresented!.presentedViewController != nil {
-            currentlyPresented = currentlyPresented!.presentedViewController
+        while let next = current.presentedViewController {
+            current = next
         }
         
-        return currentlyPresented!
+        return current
     }
 }

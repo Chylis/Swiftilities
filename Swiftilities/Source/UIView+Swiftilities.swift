@@ -10,10 +10,10 @@ import UIKit
 
 //MARK: Layout Utilities.
 
-extension UIView {
+public extension UIView {
     
     //Cheers Matt Neuberg
-    public func reportAmbiguity() {
+    func reportAmbiguity() {
         for subview in subviews {
             if subview.hasAmbiguousLayout() {
                 NSLog("View has ambigious layout: \(subview)")
@@ -26,7 +26,7 @@ extension UIView {
     }
     
     //Cheers Matt Neuberg
-    public func listConstraints() {
+    func listConstraints() {
         for subview in subviews {
             let arr1 = subview.constraintsAffectingLayoutForAxis(.Horizontal)
             let arr2 = subview.constraintsAffectingLayoutForAxis(.Vertical)
@@ -38,8 +38,11 @@ extension UIView {
         }
     }
     
-    public func centerSubview(subview: UIView) {
-        addSubview(subview)
+    func centerSubview(subview: UIView) {
+        if subview.superview == nil {
+            addSubview(subview)
+        }
+        
         subview.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([
             subview.widthAnchor.constraintEqualToAnchor(widthAnchor),
@@ -52,15 +55,15 @@ extension UIView {
 
 //MARK: Nib instantiation
 
-extension UIView {
+public extension UIView {
     
-    public class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
+    class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
                               maybeBundle: NSBundle? = nil) -> T {
         let v: T? = fromNib(nibNameOrNil, maybeBundle: maybeBundle)
         return v!
     }
     
-    public class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
+    class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
                               maybeBundle: NSBundle? = nil) -> T? {
         
         let name = nibNameOrNil ?? String(T)
@@ -79,9 +82,9 @@ extension UIView {
 
 //MARK: Animation
 
-extension UIView {
+public extension UIView {
     
-    public func animateTransition(duration: CFTimeInterval = 0.25) {
+    func animateTransition(duration: CFTimeInterval = 0.25) {
         CATransaction.begin()
         let transition = CATransition()
         transition.duration = duration

@@ -11,12 +11,12 @@ import UIKit
 
 //MARK: Utility initialisers
 
-extension UIColor {
+public extension UIColor {
     
     /**
      Creates a color from hex
      */
-    public convenience init(hexString: String) {
+    convenience init(hexString: String) {
         let hex = hexString.stringByTrimmingCharactersInSet(
             NSCharacterSet.alphanumericCharacterSet().invertedSet)
         var int = UInt32()

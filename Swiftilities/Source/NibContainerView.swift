@@ -9,7 +9,7 @@
 import UIKit
 
 public enum NibContainerViewError: ErrorType {
-    case ClassMismatchError
+    case ClassMismatch
 }
 
 public class NibContainerView: UIView {
@@ -58,6 +58,6 @@ public class NibContainerView: UIView {
         if contentView is T {
             return contentView as! T
         }
-        throw NibContainerViewError.ClassMismatchError
+        throw NibContainerViewError.ClassMismatch
     }
 }

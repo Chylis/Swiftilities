@@ -10,12 +10,12 @@ import Foundation
 
 //MARK: Device Token
 
-extension NSData {
+public extension NSData {
     
     /**
      Returns a formatted Device Token String
      */
-    public func formattedDeviceToken() -> String {
+    func formattedDeviceToken() -> String {
         return description
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
