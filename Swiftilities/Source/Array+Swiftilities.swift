@@ -11,14 +11,14 @@ import Foundation
 public extension Array {
     
     /**
-     Returns the element at 'index' if the array's range of valid index values contains the received index, else nil
+     * Returns the element at 'index' if the array's range of valid index values contains the received index, else nil
      */
     subscript(safe index: Int) -> Element? {
         return indices ~= index ? self[index] : nil
     }
     
     //Cheers Matt Neuberg
-    mutating func removeAtIndexes(ixs:[Int]) -> () {
+    mutating func removeAtIndexes(ixs:[Int]) {
         for i in ixs.sort(>) {
             removeAtIndex(i)
         }

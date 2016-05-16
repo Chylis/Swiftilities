@@ -13,7 +13,7 @@ import Foundation
 public extension NSData {
     
     /**
-     Returns a formatted Device Token String
+     * Returns a formatted Device Token String
      */
     func formattedDeviceToken() -> String {
         return description

@@ -12,7 +12,10 @@ public enum NibContainerViewError: ErrorType {
     case ClassMismatch
 }
 
-public class NibContainerView: UIView {
+/// A utility UIView class which loads and holds a nib-view.
+/// Use by calling the 'setViewClass/1' method
+/// Access the nib-view by calling the 'view/1' method
+public final class NibContainerView: UIView {
     
     //MARK: Properties
     
@@ -20,7 +23,7 @@ public class NibContainerView: UIView {
         didSet {
             guard viewClass != oldValue else { return }
             contentView = UIView.fromNib(String(viewClass),
-                                         maybeBundle: NSBundle(forClass: viewClass))
+                                         bundle: NSBundle(forClass: viewClass))
         }
     }
     
@@ -54,6 +57,10 @@ public class NibContainerView: UIView {
         viewClass = T.self
     }
     
+    /**
+     Returns the contained view as T     
+     - throws: ClassMismatch error if the contained view is not of type T
+     */
     public func view<T: UIView>() throws -> T {
         if contentView is T {
             return contentView as! T

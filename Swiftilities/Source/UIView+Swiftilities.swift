@@ -58,16 +58,15 @@ public extension UIView {
 public extension UIView {
     
     class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
-                              maybeBundle: NSBundle? = nil) -> T {
-        let v: T? = fromNib(nibNameOrNil, maybeBundle: maybeBundle)
+                              bundle: NSBundle = NSBundle.mainBundle()) -> T {
+        let v: T? = fromNib(nibNameOrNil, bundle: bundle)
         return v!
     }
     
     class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
-                              maybeBundle: NSBundle? = nil) -> T? {
+                              bundle: NSBundle = NSBundle.mainBundle()) -> T? {
         
         let name = nibNameOrNil ?? String(T)
-        let bundle: NSBundle = maybeBundle ?? NSBundle.mainBundle()
         let nibViews = bundle.loadNibNamed(name, owner: nil, options: nil)
         
         var view: T?
@@ -90,5 +89,30 @@ public extension UIView {
         transition.duration = duration
         layer.addAnimation(transition, forKey: nil)
         CATransaction.commit()
+    }
+}
+
+//MARK: Searching
+
+public extension UIView {
+    
+    /**
+     * Travels down the view's hierarchy and applies the received predicate on 
+     * each view until a match is found, or until the entire hierarchy is traversed.
+     * Returns the first view that returns true, or nil if no such view is found.
+     */
+    func findViewMatching(@noescape predicate: UIView -> Bool) -> UIView? {
+        
+        if predicate(self) {
+            return self
+        }
+        
+        for subview in subviews {
+            if let match =  subview.findViewMatching(predicate) {
+                return match
+            }
+        }
+        
+        return nil
     }
 }

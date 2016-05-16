@@ -11,7 +11,7 @@ import UIKit
 public extension UIImage {
     
     /**
-     Creates an image from the view
+     * Creates an image from the view
      */
     static func fromView(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
