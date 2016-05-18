@@ -11,6 +11,20 @@ import XCTest
 
 class DictionaryTests: XCTestCase {
     
+    func testCustomSubscript() {
+        var dict = [0:0,1:1,2:2,3:3]
+        
+        //Assert correct value for existing key is returned
+        XCTAssertEqual(3, dict[3, defaultTo: 5])
+        
+        //Assert default value for non-existing key is returned
+        XCTAssertEqual(5, dict[9, defaultTo: 5])
+        
+        //Assert possibility to add new values using custom subscript operator
+        dict[77, defaultTo: 100] += 1
+        XCTAssertEqual(101, dict[77])
+    }
+    
     func testMerge() {
         var dict1 = [0:0,1:1,2:2,3:3]
         let dict2 = [4:4,5:5,6:6,7:7]

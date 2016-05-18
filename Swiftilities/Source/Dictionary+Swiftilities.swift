@@ -11,6 +11,26 @@ import Foundation
 public extension Dictionary {
     
     /**
+     * Get: Returns value for key if key is present, else returns default value
+     * Set: Sets the received value for the key. 
+     *
+     * Example get: dict["age", defaultTo: 0]
+     * Returns default value 0 if key "age" is not present
+     
+     * Example set: dict["age", defaultTo: 0] += 1
+     * Value for key "age" is either "existing value + 1" or "default value (i.e. 0) + 1" key if "age" is not present
+     */
+    subscript(key: Key, defaultTo value: Value) -> Value {
+        get {
+            return self[key] ?? value
+        }
+        
+        set(newValue) {
+            self[key] = newValue
+        }
+    }
+    
+    /**
      * Creates a new dictionary from a sequence of key-value pairs
      * Thanks Chris Eidhof - Advanced Swift
      */
