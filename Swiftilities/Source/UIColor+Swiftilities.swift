@@ -15,9 +15,9 @@ public extension UIColor {
     
     /**
      * Creates a color from hex
-     * Thanks http://stackoverflow.com/a/33397427/1136081
      */
     convenience init(hexString: String) {
+        // Thanks http://stackoverflow.com/a/33397427/1136081
         let hex = hexString.stringByTrimmingCharactersInSet(
             NSCharacterSet.alphanumericCharacterSet().invertedSet)
         var int = UInt32()

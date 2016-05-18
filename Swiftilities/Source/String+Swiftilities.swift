@@ -15,13 +15,4 @@ public extension String {
     func toArray() -> [String] {
         return characters.map { String($0) }
     }
-    
-    /**
-     * Returns the character at the received index as a String, or nil
-     * Note: Complexity is O(N) and not O(1)
-     */
-    subscript (index: Int) -> String? {
-        return toArray()[safe: index]
-    }
-
 }

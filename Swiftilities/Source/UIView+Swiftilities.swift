@@ -12,7 +12,6 @@ import UIKit
 
 public extension UIView {
     
-    //Cheers Matt Neuberg
     func reportAmbiguity() {
         for subview in subviews {
             if subview.hasAmbiguousLayout() {
@@ -25,7 +24,6 @@ public extension UIView {
         }
     }
     
-    //Cheers Matt Neuberg
     func listConstraints() {
         for subview in subviews {
             let arr1 = subview.constraintsAffectingLayoutForAxis(.Horizontal)
@@ -101,14 +99,15 @@ public extension UIView {
      * each view until a match is found, or until the entire hierarchy is traversed.
      * Returns the first view that returns true, or nil if no such view is found.
      */
-    func findViewMatching(@noescape predicate: UIView -> Bool) -> UIView? {
+    func findViewMatching(@noescape predicate: UIView throws -> Bool)
+        rethrows -> UIView? {
         
-        if predicate(self) {
+        if try predicate(self) {
             return self
         }
         
         for subview in subviews {
-            if let match =  subview.findViewMatching(predicate) {
+            if let match =  try subview.findViewMatching(predicate) {
                 return match
             }
         }

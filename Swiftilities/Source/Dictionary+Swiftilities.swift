@@ -14,13 +14,13 @@ public extension Dictionary {
      * Get: Returns value for key if key is present, else returns default value
      * Set: Sets the received value for the key. 
      *
-     * Example get: dict["age", defaultTo: 0]
+     * Example get: dict["age", default: 0]
      * Returns default value 0 if key "age" is not present
      
-     * Example set: dict["age", defaultTo: 0] += 1
+     * Example set: dict["age", default: 0] += 1
      * Value for key "age" is either "existing value + 1" or "default value (i.e. 0) + 1" key if "age" is not present
      */
-    subscript(key: Key, defaultTo value: Value) -> Value {
+    subscript(key: Key, default value: Value) -> Value {
         get {
             return self[key] ?? value
         }
@@ -32,7 +32,6 @@ public extension Dictionary {
     
     /**
      * Creates a new dictionary from a sequence of key-value pairs
-     * Thanks Chris Eidhof - Advanced Swift
      */
     init<S: SequenceType
         where S.Generator.Element == (Key,Value)>(_ sequence: S) {
@@ -42,7 +41,6 @@ public extension Dictionary {
     
     /**
      * Merges self with the received sequence type
-     * Thanks Chris Eidhof - Advanced Swift
      */
     mutating func merge<S: SequenceType
         where S.Generator.Element == (Key,Value)>(other: S) {
@@ -53,12 +51,12 @@ public extension Dictionary {
     
     /**
      * Returns a new dictionary, keeping the same keys but transforming the values
-     * Thanks Chris Eidhof - Advanced Swift
      */
-    func mapValues<NewValue>(transform: Value -> NewValue) -> [Key:NewValue] {
-        return Dictionary<Key, NewValue>(map { (key, value) -> (Key, NewValue) in
-            return (key, transform(value))
-            })
+    func mapValues<NewValue>(@noescape transform: Value throws -> NewValue)
+        rethrows -> [Key:NewValue] {
+            return try Dictionary<Key, NewValue>(map { (key, value) -> (Key, NewValue) in
+                return (key, try transform(value))
+                })
     }
 }
 

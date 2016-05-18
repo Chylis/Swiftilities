@@ -1,3 +1,9 @@
 # Swiftilities
 
-Swift utilities that assist me in writing short, expressive and clear code.
+Swift utilities that help me in write short, expressive and clear code.
+
+Credits to: 
+- 'Advanced Swift' - Chris Eidhof
+- 'Programming iOS 9' - Matt Neuberg
+- 'SwiftKit' -  https://github.com/JohnSundell/SwiftKit
+- 'ExSwift' - https://github.com/pNre/ExSwift

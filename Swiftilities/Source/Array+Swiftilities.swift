@@ -16,8 +16,7 @@ public extension Array {
     subscript(safe index: Int) -> Element? {
         return indices ~= index ? self[index] : nil
     }
-    
-    //Cheers Matt Neuberg
+        
     mutating func removeAtIndexes(ixs:[Int]) {
         for i in ixs.sort(>) {
             removeAtIndex(i)

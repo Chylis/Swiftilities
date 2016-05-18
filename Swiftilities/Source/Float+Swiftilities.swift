@@ -10,7 +10,6 @@ import Foundation
 
 public extension Float {
     
-    // Cheers https://github.com/pNre/ExSwift
     static func random(min: Float = 0, max: Float) -> Float {
         let diff = max - min;
         let rand = Float(arc4random() % (UInt32(RAND_MAX) + 1))

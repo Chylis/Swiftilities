@@ -11,17 +11,17 @@ import XCTest
 
 class DictionaryTests: XCTestCase {
     
-    func testCustomSubscript() {
+    func testDefaultToSubscript() {
         var dict = [0:0,1:1,2:2,3:3]
         
         //Assert correct value for existing key is returned
-        XCTAssertEqual(3, dict[3, defaultTo: 5])
+        XCTAssertEqual(3, dict[3, default: 5])
         
         //Assert default value for non-existing key is returned
-        XCTAssertEqual(5, dict[9, defaultTo: 5])
+        XCTAssertEqual(5, dict[9, default: 5])
         
         //Assert possibility to add new values using custom subscript operator
-        dict[77, defaultTo: 100] += 1
+        dict[77, default: 100] += 1
         XCTAssertEqual(101, dict[77])
     }
     

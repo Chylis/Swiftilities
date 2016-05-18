@@ -17,11 +17,11 @@ public extension SequenceType {
      * 2) [String:Int] to [Int:String]: ["a":0,"b":1,"c":2].toDictionary { ($1, String($0)) }
      */
     func toDictionary<K,V>(@noescape transform:
-        (element: Generator.Element) -> (key: K, value: V)?) -> [K:V] {
+        (element: Generator.Element) throws -> (key: K, value: V)?) rethrows -> [K:V] {
         
-        return reduce([:]) { dict, e in
+        return try reduce([:]) { dict, e in
             var dict = dict
-            if let (key, value) = transform(element: e) {
+            if let (key, value) = try transform(element: e) {
                 dict[key] = value
             }
             return dict
@@ -31,19 +31,19 @@ public extension SequenceType {
     
     /**
      * Returns true if all elements match the received predicate
-     * Thanks Chris Eidhof - Advanced Swift
      */
-    func all(predicate: Generator.Element -> Bool) -> Bool {
-        // every element matches a predicate if no element doesn't match it
-        return !contains { !predicate($0) }
+    func all(@noescape check: Generator.Element throws -> Bool) rethrows -> Bool {
+        for element in self {
+            guard try check(element) else { return false }
+        }
+        return true
     }
     
     /**
      * Returns the first element matching the received predicate, or nil
-     * Thanks Chris Eidhof - Advanced Swift
      */
-    func findElement(match: Generator.Element -> Bool) -> Generator.Element? {
-        for element in self where match(element) {
+    func findElement(@noescape match: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
+        for element in self where try match(element) {
             return element
         }
         return nil
@@ -54,7 +54,6 @@ extension SequenceType where Generator.Element: Hashable {
     
     /**
      * Returns all unique elements while maintaining the order
-     * Thanks Chris Eidhof - Advanced Swift
      */
     func unique() -> [Generator.Element] {
         var seen: Set<Generator.Element> = []

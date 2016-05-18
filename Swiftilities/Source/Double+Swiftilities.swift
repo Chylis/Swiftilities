@@ -10,7 +10,6 @@ import Foundation
 
 public extension Double {
     
-    // Cheers https://github.com/pNre/ExSwift
     static func random(min: Double = 0, max: Double) -> Double {
         let diff = max - min;
         let rand = Double(arc4random() % (UInt32(RAND_MAX) + 1))
