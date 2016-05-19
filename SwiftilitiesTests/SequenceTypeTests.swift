@@ -49,4 +49,46 @@ class SequenceTypeTests: XCTestCase {
         
         XCTAssertEqual(nonUniques.unique(), uniques)
     }
+    
+    
+    func testEquatableSubtract() {
+        let arrayOfEquatables1: [Range<Int>] = Array.init(count:1000, repeatedValue: 0..<Int.random(max: 5))
+        let arrayOfEquatables2 = arrayOfEquatables1
+        let emptyArray = arrayOfEquatables1.subtract(arrayOfEquatables2)
+        XCTAssertEqual(emptyArray, [])
+        
+        let arrayOfEquatables3: [Range<Int>] = [0..<1,0..<2,0..<3,0..<4]
+        let arrayOfEquatables4: [Range<Int>] = [0..<1,0..<2,0..<3]
+        XCTAssertEqual([0..<4], arrayOfEquatables3.subtract(arrayOfEquatables4))
+    }
+    
+    func testHashableSubtract() {
+        let arrayOfHashables1: [Int] = Array.init(count: 1000, repeatedValue: 5)
+        let arrayOfHashables2 = arrayOfHashables1
+        let emptyArray = arrayOfHashables1.subtract(arrayOfHashables2)
+        XCTAssertEqual(emptyArray, [])
+        
+        let arrayOfHashables3: [Int] = [-77, 0,1,2,3,4,5]
+        let arrayOfHashables4: [Int] = [9,8,7,6,5,4,3,0]
+        let shouldContain_minus77_1_2 = arrayOfHashables3.subtract(arrayOfHashables4)
+        XCTAssertEqual(shouldContain_minus77_1_2, [-77, 1,2,])
+    }
+    
+//    func testHashableSubtractPerformance() {
+//        let arrayOfHashables1: [Int] = Array.init(count: 1000000, repeatedValue: Int.random(max: 5))
+//        let arrayOfHashables2: [Int] = Array.init(count: 1000000, repeatedValue: Int.random(max: 5))
+//        
+//        self.measureBlock {
+//            arrayOfHashables1.subtract(arrayOfHashables2)
+//        }
+//    }
+    
+//    func testEquatableSubtractPerformance() {
+//        let arrayOfEquatables1: [Range<Int>] = Array.init(count:3000, repeatedValue: 0..<Int.random(max: 5))
+//        let arrayOfEquatables2: [Range<Int>] = Array.init(count:3000, repeatedValue: 0..<Int.random(max: 5))
+//        
+//        self.measureBlock {
+//            arrayOfEquatables1.subtract(arrayOfEquatables2)
+//        }
+//    }
 }

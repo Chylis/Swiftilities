@@ -35,6 +35,16 @@ class DictionaryTests: XCTestCase {
         }
     }
     
+    func testUnion() {
+        let dict1 = [0:0,1:1,2:2,3:3]
+        let dict2 = [4:4,5:5,6:6,7:7]
+        let dict3 = dict1.union(dict2)
+        
+        for int in 0...7 {
+            XCTAssertEqual(int, dict3[int])
+        }
+    }
+    
     func testPlusOperator() {
         let dict1 = [0:0,1:1,2:2,3:3]
         let dict2 = [4:4,5:5,6:6,7:7]
@@ -43,6 +53,14 @@ class DictionaryTests: XCTestCase {
         for int in 0...7 {
             XCTAssertEqual(int, dict3[int])
         }
+    }
+    
+    func testMinusOperator() {
+        let dict1 = [0:1,1:1,2:2,3:3]
+        let dict2 = [0:1,3:3,4:4,5:5,6:6,7:7]
+        let dict3 = dict1 - dict2
+        
+        XCTAssertEqual([1:1,2:2], dict3)
     }
     
     func testMapValues() {

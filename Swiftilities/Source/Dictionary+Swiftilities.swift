@@ -50,6 +50,16 @@ public extension Dictionary {
     }
     
     /**
+     * Returns a new dictionary containing the union between self and other
+     */
+    func union<S: SequenceType
+        where S.Generator.Element == (Key,Value)>(other: S) -> [Key:Value] {
+        var union = self
+        union.merge(other)
+        return union
+    }
+    
+    /**
      * Returns a new dictionary, keeping the same keys but transforming the values
      */
     func mapValues<NewValue>(@noescape transform: Value throws -> NewValue)
@@ -62,10 +72,20 @@ public extension Dictionary {
 
 
 /**
- * Creates and returns a new dictionary containing the union of lhs and rhs
+ * Returns a new dictionary containing the union of lhs and rhs
  */
-public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V]{
-    var union = lhs
-    union.merge(rhs)
-    return union
+public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
+    return lhs.union(rhs)
+}
+
+/**
+ * Returns a new dictionary containing the difference between lhs and rhs
+ * (i.e. all elements in lhs that are not present in rhs)
+ *
+ * Dictionaries are considered equal if they contain the same [key: value] pairs.
+ *
+ * Note! Complexity is O(N^2)
+ */
+public func - <K,V: Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
+    return Dictionary(lhs.subtract(rhs, predicate: ==))
 }
