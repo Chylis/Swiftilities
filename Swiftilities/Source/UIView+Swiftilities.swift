@@ -12,6 +12,9 @@ import UIKit
 
 public extension UIView {
     
+    /**
+     * Traverses the tree of subviews and reports ambigious layout
+     */
     func reportAmbiguity() {
         for subview in subviews {
             if subview.hasAmbiguousLayout() {
@@ -24,11 +27,14 @@ public extension UIView {
         }
     }
     
+    /**
+     * Traverses the tree of subviews and lists each view's constraints
+     */
     func listConstraints() {
         for subview in subviews {
             let arr1 = subview.constraintsAffectingLayoutForAxis(.Horizontal)
             let arr2 = subview.constraintsAffectingLayoutForAxis(.Vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", subview, arr1, arr2)
+            NSLog("\n\n\(subview)\nH: \(arr1)\nV:\(arr2)")
             
             if subview.subviews.count > 0 {
                 subview.listConstraints()
@@ -36,6 +42,9 @@ public extension UIView {
         }
     }
     
+    /**
+     * Centers the received subview
+     */
     func centerSubview(subview: UIView) {
         if subview.superview == nil {
             addSubview(subview)
@@ -55,25 +64,33 @@ public extension UIView {
 
 public extension UIView {
     
-    class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
-                              bundle: NSBundle = NSBundle.mainBundle()) -> T {
-        let v: T? = fromNib(nibNameOrNil, bundle: bundle)
-        return v!
+    /**
+     * Loads a view from a nib
+     - parameter nibName: The name of the nib containing the view. Defaults to the name of the view class.
+     - returns: The loaded view
+     */
+    class func fromNib<T : UIView>(nibName: String = String(T)) -> T {
+        let view: T? = fromNib(nibName)
+        assert(view != nil, "Error loading view '\(String(T))' from nib '\(nibName)'")
+        return view!
     }
     
-    class func fromNib<T : UIView>(nibNameOrNil: String? = nil,
-                              bundle: NSBundle = NSBundle.mainBundle()) -> T? {
+    /**
+     * Attempts to load a view from a nib
+     - parameter nibName: The name of the nib containing the view. Defaults to the name of the view class.
+     - returns: The loaded view or nil if no view in the nib could not be loaded as 'T'
+     */
+    class func fromNib<T : UIView>(nibName: String = String(T)) -> T? {
+        let bundle = NSBundle(forClass: T.self)
+        let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil)
         
-        let name = nibNameOrNil ?? String(T)
-        let nibViews = bundle.loadNibNamed(name, owner: nil, options: nil)
-        
-        var view: T?
-        for v in nibViews {
-            if let tog = v as? T {
-                view = tog
+        for view in nibViews {
+            if let viewAsT = view as? T {
+                return viewAsT
             }
         }
-        return view
+        
+        return nil
     }
 }
 

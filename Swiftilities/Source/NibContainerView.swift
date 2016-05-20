@@ -19,20 +19,12 @@ public final class NibContainerView: UIView {
     
     //MARK: Properties
     
-    private var viewClass: AnyClass = UIView.self {
-        didSet {
-            guard viewClass != oldValue else { return }
-            contentView = UIView.fromNib(String(viewClass),
-                                         bundle: NSBundle(forClass: viewClass))
-        }
-    }
+    private var viewClass: AnyClass = UIView.self
     
-    private var contentView: UIView? {
+    private var contentView: UIView = UIView() {
         didSet {
-            oldValue?.removeFromSuperview()
-            if let contentView = contentView {
-                centerSubview(contentView)
-            }
+            oldValue.removeFromSuperview()
+            centerSubview(contentView)
         }
     }
     
@@ -42,9 +34,18 @@ public final class NibContainerView: UIView {
         super.init(frame: CGRectZero)
     }
     
-    public convenience init<T: UIView>(viewClass: T.Type){
+    /**
+     * Creates a new instance and loads a view of the received class and adds it as a subview.
+     
+     - parameters:
+     - viewClass: The class of the view to load.
+     - nibName: The name of the nib containing the view.
+     Only required if the nib name differs from the name of the view class.
+     */
+    public convenience init<T: UIView>(viewClass: T.Type,
+                            nibName: String = String(T)){
         self.init()
-        setViewClass(T)
+        setViewClass(T.self, nibName: nibName)
     }
     
     required public convenience init?(coder aDecoder: NSCoder) {
@@ -53,17 +54,28 @@ public final class NibContainerView: UIView {
     
     //MARK: Public
     
-    public func setViewClass<T: UIView>(_: T.Type) {
-        viewClass = T.self
+    /**
+     * Loads a view of the received class and adds it as a subview
+     
+     - parameters:
+     - viewClass: The class of the view to load
+     - nibName: The name of the nib containing the view.
+     Only required if the nib name differs from the name of the view class.
+     */
+    public func setViewClass<T: UIView>(viewClass: T.Type,
+                             nibName: String = String(T)) {
+        guard viewClass != self.viewClass else { return }
+        self.viewClass = T.self
+        self.contentView = UIView.fromNib(nibName) as T
     }
     
     /**
-     Returns the contained view as T     
+     Returns the contained view as T
      - throws: ClassMismatch error if the contained view is not of type T
      */
     public func view<T: UIView>() throws -> T {
-        if contentView is T {
-            return contentView as! T
+        if let view = contentView as? T {
+            return view
         }
         throw NibContainerViewError.ClassMismatch
     }
