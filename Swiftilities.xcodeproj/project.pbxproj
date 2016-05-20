@@ -33,7 +33,7 @@
 		5F7E35B01CDDD803002FF0EB /* Swiftilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */; };
 		5F7E35B51CDDD803002FF0EB /* SwiftilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E35B41CDDD803002FF0EB /* SwiftilitiesTests.swift */; };
 		5F81CDFA1CE64549001C43DE /* CollectionType+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDF91CE64549001C43DE /* CollectionType+Swiftilities.swift */; };
-		5F81CDFC1CE64845001C43DE /* Int+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFB1CE64845001C43DE /* Int+Swiftilities.swift */; };
+		5F81CDFC1CE64845001C43DE /* _SignedIntegerType+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFB1CE64845001C43DE /* _SignedIntegerType+Swiftilities.swift */; };
 		5F81CDFE1CE64A2E001C43DE /* Float+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */; };
 		5F81CE001CE64AD5001C43DE /* Double+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */; };
 		5F81CE021CE64C97001C43DE /* String+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */; };
@@ -43,6 +43,8 @@
 		5FBF15631CEAFDE200EA458F /* CollectionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15621CEAFDE100EA458F /* CollectionTypeTests.swift */; };
 		5FBF15651CEB06DA00EA458F /* SequenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15641CEB06DA00EA458F /* SequenceTypeTests.swift */; };
 		5FBF15671CEB0D4C00EA458F /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */; };
+		5FDF06F11CEF0FF9006E3DBC /* Range+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */; };
+		5FDF06F31CEF1140006E3DBC /* MutableCollectionType+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F21CEF1140006E3DBC /* MutableCollectionType+Swiftilities.swift */; };
 		5FF55E281CE5C8F000387D0A /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +80,7 @@
 		5F7E35B41CDDD803002FF0EB /* SwiftilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftilitiesTests.swift; sourceTree = "<group>"; };
 		5F7E35B61CDDD803002FF0EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F81CDF91CE64549001C43DE /* CollectionType+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Swiftilities.swift"; sourceTree = "<group>"; };
-		5F81CDFB1CE64845001C43DE /* Int+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Swiftilities.swift"; sourceTree = "<group>"; };
+		5F81CDFB1CE64845001C43DE /* _SignedIntegerType+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_SignedIntegerType+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swiftilities.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,8 @@
 		5FBF15621CEAFDE100EA458F /* CollectionTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTypeTests.swift; sourceTree = "<group>"; };
 		5FBF15641CEB06DA00EA458F /* SequenceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTypeTests.swift; sourceTree = "<group>"; };
 		5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
+		5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+Swiftilities.swift"; sourceTree = "<group>"; };
+		5FDF06F21CEF1140006E3DBC /* MutableCollectionType+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollectionType+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FF55E271CE5C8F000387D0A /* NibContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,12 +167,14 @@
 				5F378A881CDF5E4900BD9557 /* NSData+Swiftilities.swift */,
 				5FF55E271CE5C8F000387D0A /* NibContainerView.swift */,
 				5F81CDF91CE64549001C43DE /* CollectionType+Swiftilities.swift */,
-				5F81CDFB1CE64845001C43DE /* Int+Swiftilities.swift */,
+				5F81CDFB1CE64845001C43DE /* _SignedIntegerType+Swiftilities.swift */,
 				5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */,
 				5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */,
 				5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */,
 				5FBF155B1CE9CA1100EA458F /* SequenceType+Swiftilities.swift */,
 				5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */,
+				5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */,
+				5FDF06F21CEF1140006E3DBC /* MutableCollectionType+Swiftilities.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -311,8 +317,10 @@
 				5F378A851CDF5D9F00BD9557 /* UIImage+Swiftilities.swift in Sources */,
 				5F378A891CDF5E4900BD9557 /* NSData+Swiftilities.swift in Sources */,
 				5F81CDFA1CE64549001C43DE /* CollectionType+Swiftilities.swift in Sources */,
-				5F81CDFC1CE64845001C43DE /* Int+Swiftilities.swift in Sources */,
+				5F81CDFC1CE64845001C43DE /* _SignedIntegerType+Swiftilities.swift in Sources */,
+				5FDF06F11CEF0FF9006E3DBC /* Range+Swiftilities.swift in Sources */,
 				5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */,
+				5FDF06F31CEF1140006E3DBC /* MutableCollectionType+Swiftilities.swift in Sources */,
 				5F81CDFE1CE64A2E001C43DE /* Float+Swiftilities.swift in Sources */,
 				5F81CE001CE64AD5001C43DE /* Double+Swiftilities.swift in Sources */,
 				5F378A7E1CDF588D00BD9557 /* Array+Swiftilities.swift in Sources */,

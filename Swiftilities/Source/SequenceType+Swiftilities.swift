@@ -70,6 +70,16 @@ public extension SequenceType {
                 }
             }
     }
+    
+    
+    /**
+     Returns a new array containing of the elements in self in a random order
+     */
+    func shuffle() -> [Generator.Element] {
+        var clone = Array(self)
+        clone.shuffleInPlace()
+        return clone
+    }
 }
 
 
