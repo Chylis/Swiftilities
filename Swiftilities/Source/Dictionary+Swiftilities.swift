@@ -62,10 +62,14 @@ public extension Dictionary {
     }
 }
 
+//MARK: Union
+
 ///Returns a new dictionary containing the union of lhs and rhs
 public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
     return lhs.union(rhs)
 }
+
+//MARK: Difference
 
 /**
  Returns the difference between lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.

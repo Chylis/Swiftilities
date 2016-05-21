@@ -56,11 +56,20 @@ class DictionaryTests: XCTestCase {
     }
     
     func testMinusOperator() {
-        let dict1 = [0:1,1:1,2:2,3:3]
-        let dict2 = [0:1,3:3,4:4,5:5,6:6,7:7]
-        let dict3 = dict1 - dict2
+        //Test removing empty dictionary
+        XCTAssertEqual([1:1,2:2,3:3] - [:], [1:1,2:2,3:3])
+        XCTAssertEqual(([:] as [Int:Int]) - ([:] as [Int:Int]), [:])
+        XCTAssertEqual([:] - [1:1,2:2,3:3], [:])
         
-        XCTAssertEqual([1:1,2:2], dict3)
+        //Test removing single element in dict
+        XCTAssertEqual([1:1,2:2,3:3] - [3:3], [1:1,2:2])
+        
+        //Test removing several elements
+        XCTAssertEqual([1:1,2:2,3:3] - [3:3, 1:1], [2:2])
+        XCTAssertEqual([1:1,3:3,5:5,6:6,7:7] - [1:1,2:2,3:3], [5:5,6:6,7:7])
+        
+        //Test removing all elements
+        XCTAssertEqual([1:1,2:2,3:3] - [1:1,2:2,3:3,4:4,5:5], [:])
     }
     
     func testMapValues() {

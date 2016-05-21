@@ -51,10 +51,10 @@ class SequenceTypeTests: XCTestCase {
     //MARK: FilterDuplicates
     
     func testEquatableDuplicates() {
-        let uniques = [0..<1,0..<2,0..<3,0..<4,0..<5,0..<6,0..<7,0..<8,0..<9]
-        var nonUniques = uniques
-        nonUniques.appendContentsOf(nonUniques)
-        XCTAssertEqual(nonUniques.filterDuplicates { $0 == $1 }, uniques)
+        let uniques2 = [0..<1,0..<2,0..<3]
+        var nonUniques2 = uniques2
+        nonUniques2.appendContentsOf(nonUniques2)
+        XCTAssertEqual(nonUniques2.filterDuplicates { $0 == $1 }, uniques2)
     }
     
     func testHashableDuplicates() {
@@ -70,7 +70,12 @@ class SequenceTypeTests: XCTestCase {
     
     
     func testEquatableDifference() {
-        let arrayOfEquatables1: [Range<Int>] = Array(count:1000, repeatedValue: 0..<Int.random(max: 5))
+        let arrayOfEquatables1: [Range<Int>] = Array(count:1000, repeatedValue: 0..<Int.random())
+        
+        //Test different of non-overlapping sequences
+        let dict1: [Int:Int] = [1:1,2:2,3:3]
+        let dict2: [Int:Int] = [1:0]
+        XCTAssertEqual(Dictionary(dict1.difference(dict2, predicate: ==)), dict1)
         
         //Test difference of equal sequences
         XCTAssertEqual(arrayOfEquatables1.difference(arrayOfEquatables1), [])
@@ -96,13 +101,14 @@ class SequenceTypeTests: XCTestCase {
         XCTAssertEqual(arrayOfHashables1.difference(arrayOfHashables1), [])
         
         //Test difference of different sequences
+        XCTAssertEqual([1,2,3,3].difference([3]), [1,2])
         XCTAssertEqual([-77,0,1,2,3,4,1,5].difference([9,8,7,6,5,4,3,0]), [-77,1,2,1])
         XCTAssertEqual(Dictionary([3:"q",1:"a",12:"b",2:"a"].difference([1:"a",12:"b"], predicate: ==)),
                        [3:"q",2:"a"])
         
         //Test larger data set
-        let randomArray1 = randomIntArrayOfSize(10000).sort()
-        let randomArray2 = randomIntArrayOfSize(10000)
+        let randomArray1 = randomIntArrayOfSize(5000).sort()
+        let randomArray2 = randomIntArrayOfSize(5000)
         let customDiff = randomArray1.difference(randomArray2).filterDuplicates()
         
         let randomSet1 = Set(randomArray1)
@@ -115,7 +121,7 @@ class SequenceTypeTests: XCTestCase {
     //MARK: Intersection
     
     func testEquatableIntersect() {
-        let arrayOfEquatables1: [Range<Int>] = Array(count:1000, repeatedValue: 0..<Int.random(max: 5))
+        let arrayOfEquatables1: [Range<Int>] = Array(count:1000, repeatedValue: 0..<Int.random())
         
         //Test no intersecting elements
         XCTAssertEqual(arrayOfEquatables1.intersection([]), [])
@@ -140,8 +146,8 @@ class SequenceTypeTests: XCTestCase {
         XCTAssertEqual([77,-1,2,3,1,4,5,-1,5].intersection([6,7,-1,8,9,77]), [77,-1,-1])
         
         //Test larger data set
-        let randomArray1 = randomIntArrayOfSize(10000).sort()
-        let randomArray2 = randomIntArrayOfSize(10000)
+        let randomArray1 = randomIntArrayOfSize(5000).sort()
+        let randomArray2 = randomIntArrayOfSize(5000)
         let customIntersected = randomArray1.intersection(randomArray2).filterDuplicates()
         
         let randomSet1 = Set(randomArray1)
@@ -157,7 +163,7 @@ class SequenceTypeTests: XCTestCase {
     private func randomIntArrayOfSize(size: Int) -> [Int] {
         var randoms : [Int] = []
         for _ in 0..<size {
-            randoms.append(Int.random(max: Int(UInt32.max-1)))
+            randoms.append(Int.random())
         }
         return randoms
     }

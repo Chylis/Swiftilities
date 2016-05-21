@@ -20,7 +20,7 @@ public extension _SignedIntegerType {
        - min: lower bound
        - max: upper bound. Must be between 1...4294967294 (i.e. UInt32.max - 1)
      */
-    static func random(min: Self = 0, max: Self) -> Self {
+    static func random(min: Self = 0, max: Self = numericCast(UInt32.max - 1)) -> Self {
         let upperBound = (max - min)
         precondition(upperBound > 0 && upperBound.toIntMax() < UInt32.max.toIntMax(),
                      "invalid max value - ar4random_uniform only callable up to \(UInt32.max)")
