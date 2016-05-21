@@ -30,18 +30,14 @@ public extension Dictionary {
         }
     }
     
-    /**
-     * Creates a new dictionary from a sequence of key-value pairs
-     */
+    ///Creates a new dictionary from a sequence of key-value pairs
     init<S: SequenceType
         where S.Generator.Element == (Key,Value)>(_ sequence: S) {
         self = [:]
         merge(sequence)
     }
     
-    /**
-     * Merges self with the received sequence type
-     */
+    ///Merges self with the received sequence type
     mutating func merge<S: SequenceType
         where S.Generator.Element == (Key,Value)>(other: S) {
         for (k, v) in other {
@@ -49,9 +45,7 @@ public extension Dictionary {
         }
     }
     
-    /**
-     * Returns a new dictionary containing the union between self and other
-     */
+    ///Returns a new dictionary containing the union between self and other
     func union<S: SequenceType
         where S.Generator.Element == (Key,Value)>(other: S) -> [Key:Value] {
         var union = self
@@ -59,9 +53,7 @@ public extension Dictionary {
         return union
     }
     
-    /**
-     * Returns a new dictionary, keeping the same keys but transforming the values
-     */
+    ///Returns a new dictionary, keeping the same keys but transforming the values
     func mapValues<NewValue>(@noescape transform: Value throws -> NewValue)
         rethrows -> [Key:NewValue] {
             return try Dictionary<Key, NewValue>(map { (key, value) -> (Key, NewValue) in
@@ -70,22 +62,18 @@ public extension Dictionary {
     }
 }
 
-
-/**
- * Returns a new dictionary containing the union of lhs and rhs
- */
+///Returns a new dictionary containing the union of lhs and rhs
 public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
     return lhs.union(rhs)
 }
 
 /**
- * Returns a new dictionary containing the difference between lhs and rhs
- * (i.e. all elements in lhs that are not present in rhs)
- *
- * Dictionaries are considered equal if they contain the same [key: value] pairs.
- *
- * Note! Complexity is O(N^2)
+ Returns the difference between lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.
+ 
+ - returns: a new dictionary containing the difference between lhs and rhs
+ 
+ - Note: Complexity is O(N^2)
  */
 public func - <K,V: Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
-    return Dictionary(lhs.subtract(rhs, predicate: ==))
+    return Dictionary(lhs.difference(rhs, predicate: ==))
 }

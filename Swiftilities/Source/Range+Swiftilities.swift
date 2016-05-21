@@ -11,7 +11,7 @@ import Foundation
 
 extension Range {
     
-    /// Generates random numbers within any range of indices
+    ///Generates random numbers within any range of indices
     var random: Element {
         let randomDistance = Index.Distance.random(max:count)
         return startIndex.advancedBy(randomDistance)

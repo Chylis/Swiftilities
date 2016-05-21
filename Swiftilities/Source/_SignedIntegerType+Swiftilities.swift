@@ -14,11 +14,11 @@ import Foundation
 public extension _SignedIntegerType {
     
     /**
-     * Returns a random number between 0..<max
+     Returns a random number between 0..<max
      
      - parameters:
        - min: lower bound
-       - max: upper bound. Must be between 1...4294967294
+       - max: upper bound. Must be between 1...4294967294 (i.e. UInt32.max - 1)
      */
     static func random(min: Self = 0, max: Self) -> Self {
         let upperBound = (max - min)

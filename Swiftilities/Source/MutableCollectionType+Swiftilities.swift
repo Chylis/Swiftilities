@@ -10,9 +10,7 @@ import Foundation
 
 public extension MutableCollectionType where Index: RandomAccessIndexType {
     
-    /**
-     * Randomly shuffles the elements
-     */
+    ///Randomly shuffles the elements in self
     mutating func shuffleInPlace() {
         for i in indices.dropLast() {
             let j = (i..<endIndex).random

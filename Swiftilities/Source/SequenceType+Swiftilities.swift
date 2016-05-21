@@ -11,11 +11,11 @@ import Foundation
 public extension SequenceType {
     
     /**
-     * Creates a dictionary by executing the received transformer on each element.
-     *
-     * Example usage:
-     * 1) [Int] to [String:Int]: [1,2,3].toDictionary { (String($0), $0) }
-     * 2) [String:Int] to [Int:String]: ["a":0,"b":1,"c":2].toDictionary { ($1, String($0)) }
+     Create a dictionary by applying the received closure on each element in self
+     
+     - parameter transform: A closure that transforms an element into a key value pair.
+     
+     - returns: A new dictionary
      */
     func toDictionary<K,V>(@noescape transform:
         (element: Generator.Element) throws -> (key: K, value: V)?) rethrows -> [K:V] {
@@ -29,10 +29,7 @@ public extension SequenceType {
         }
     }
     
-    
-    /**
-     * Returns true if all elements match the received predicate
-     */
+    ///Returns true if all elements match the received predicate, else false
     func all(@noescape check: Generator.Element throws -> Bool) rethrows -> Bool {
         for element in self {
             guard try check(element) else { return false }
@@ -40,9 +37,7 @@ public extension SequenceType {
         return true
     }
     
-    /**
-     * Returns the first element matching the received predicate, or nil
-     */
+    ///Returns the first element matching the received predicate, or nil if no elements match
     func findElement(@noescape match: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
         for element in self where try match(element) {
             return element
@@ -51,17 +46,21 @@ public extension SequenceType {
     }
     
     /**
-     * Returns a new array containing all elements in self that are not present in 'toRemove'
-     * Since the elements are not enforced to be 'Equatable' it is up to the received
-     * 'predicate' closure to decide about element equality.
-     *
-     * Note! Complexity is O(N^2) due to the nested for-loops (filter and contains)
-     *
-     * Example usage:
-     * [1, 2, 3].subtract(["1","2"]) { $0 == Int($1) }   // Returns [3]
-     * [1:1, 2:2, 3:3].subtract([3:3]) { $0.0 == $1.0 }  // Returns [1:1, 2:2]
+     Calculates the difference between self and another sequence
+     
+     - parameter toRemove:  The sequence to perform the diff against
+     - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality.
+     
+     - returns: A new array containing all elements **(including duplicates)** in self that are not present in 'toRemove'. Order is maintained.
+     
+     - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
+     
+     - Example Usage:
+     ````
+     [1,2,3].difference(["1","2"], predicate: { $0 == Int($1)! }) // Returns [3]
+     ````
      */
-    func subtract<S: SequenceType>(toRemove: S,
+    func difference<S: SequenceType>(toRemove: S,
                   @noescape predicate: (Generator.Element, S.Generator.Element) throws -> Bool)
         rethrows -> [Generator.Element] {
             return try filter { sourceElement in
@@ -71,10 +70,61 @@ public extension SequenceType {
             }
     }
     
+    /**
+     Intersects self with another sequence.
+     
+     - parameter other:     The sequence to intersect with
+     - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality.
+     
+     - returns: A new array containing all elements **(including duplicates)** that are present in both 'self' and 'other'. Order is maintained.
+     
+     - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
+     
+     Example Usage:
+     ````
+     [1,2,3].intersection(["1","2"], predicate: { $0 == Int($1)! }) // Returns [1,2]
+     ````
+     */
+    func intersection<S: SequenceType>(other: S,
+                    @noescape predicate: (Generator.Element, S.Generator.Element) throws -> Bool)
+        rethrows -> [Generator.Element] {
+            return try filter { sourceElement in
+                try other.contains { otherElement in
+                    try predicate(sourceElement, otherElement)
+                }
+            }
+    }
+    
     
     /**
-     Returns a new array containing of the elements in self in a random order
+     Filters out all duplicate elements while maintaining the order.
+     
+     - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality
+     
+     - returns: a new array with no duplicate elements. Order is maintained.
+     
+     - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      */
+    func filterDuplicates(@noescape predicate: (Generator.Element, Generator.Element) throws -> Bool)
+        rethrows -> [Generator.Element] {
+            
+            var seen : [Generator.Element] = []
+            
+            return try filter { sourceElement in
+                let alreadySeen = try seen.contains { seenElement in
+                    try predicate(sourceElement, seenElement)
+                }
+                
+                if alreadySeen {
+                    return false
+                } else {
+                    seen.append(sourceElement)
+                    return true
+                }
+            }
+    }
+    
+    ///Returns a new array containing of the elements in self in a random order
     func shuffle() -> [Generator.Element] {
         var clone = Array(self)
         clone.shuffleInPlace()
@@ -86,22 +136,39 @@ public extension SequenceType {
 extension SequenceType where Generator.Element: Equatable {
     
     /**
-     * Returns a new array containing all elements in self that are not present in 'toRemove'
-     * Note! Complexity is O(N^2) due to the nested for-loops (filter and contains)
+     Calculates the difference between self and another sequence
+     
+     - parameter toRemove:  The sequence to perform the diff against
+
+     - returns: A new array containing all elements **(including duplicates)** in self that are not present in 'toRemove'. Order is maintained.
+     
+     - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      */
-    func subtract <S: SequenceType where S.Generator.Element == Generator.Element>
+    func difference <S: SequenceType where S.Generator.Element == Generator.Element>
         (toRemove: S) -> [Generator.Element] {
-        return subtract(toRemove, predicate: ==)
+        return difference(toRemove, predicate: ==)
+    }
+    
+    /**
+     Intersects self with another sequence
+     
+     - parameter other: The sequence to intersect with
+     
+     - returns: A new array containing all elements **(including duplicates)** that are present in both 'self' and 'other'. Order is maintained.
+     
+     - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
+     */
+    func intersection <S: SequenceType where S.Generator.Element == Generator.Element>
+        (other: S) -> [Generator.Element] {
+        return intersection(other, predicate: ==)
     }
     
 }
 
 extension SequenceType where Generator.Element: Hashable {
     
-    /**
-     * Returns all unique elements while maintaining the order
-     */
-    func unique() -> [Generator.Element] {
+    ///Returns a new array with no duplicate elements. Order is maintained.
+    func filterDuplicates() -> [Generator.Element] {
         var seen: Set<Generator.Element> = []
         return filter {
             if seen.contains($0) {
@@ -113,11 +180,14 @@ extension SequenceType where Generator.Element: Hashable {
         }
     }
     
-    /**
-     * Returns a new array containing all elements in self that are not present in 'toRemove'
-     * Complexity is 'O(N)' since the elements are hashable (lookups using 'contains' can be done in constant time)
-     */ 
-    func subtract <S: SequenceType where S.Generator.Element == Generator.Element>
+    ///Returns a new array containing all elements **(including duplicates)** that are present in both 'self' and 'other'. Order is maintained.
+    func intersection <S: SequenceType where S.Generator.Element == Generator.Element>
+        (other: S) -> [Generator.Element] {
+        return filter { other.contains($0) }
+    }
+    
+    ///Returns a new array containing all elements **(including duplicates)** in self that are not present in 'toRemove'. Order is maintained.
+    func difference <S: SequenceType where S.Generator.Element == Generator.Element>
         (toRemove: S) -> [Generator.Element] {
         let removeSet = Set(toRemove)
         return filter { !removeSet.contains($0) }
