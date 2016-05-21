@@ -22,3 +22,60 @@ public extension Array {
         }
     }
 }
+
+public extension Array where Element: Equatable {
+    
+    //TODO: Documentation + complexity O(N)
+    mutating func remove(element: Element) -> Element? {
+        guard let idx = indexOf(element) else { return nil }
+        return removeAtIndex(idx)
+    }
+    
+    //TODO: Documentation + complexity O(N)
+    mutating func removeFromRight(element: Element) -> Element? {
+        var result: [Element] = reverse()
+        guard let removed = result.remove(element) else { return nil }
+        self = result.reverse()
+        return removed
+    }
+    
+    //TODO: Documentation + complexity O(N^2)
+    mutating func removeFromRight(elements: [Element]) {
+        elements.forEach { removeFromRight($0) }
+    }
+}
+
+//MARK: Add single element
+
+///Appends rhs to lhs
+public func + <E> (lhs: [E], rhs: E) -> [E] {
+    return lhs + [rhs]
+}
+
+//MARK: Removal
+
+//TODO: Documentation + complexity O(N)
+public func - <E: Equatable> (lhs: [E], rhs: E) -> [E] {
+    var result = lhs
+    result.removeFromRight(rhs)
+    return result
+}
+
+//TODO: Documentation + complexity O(N)
+public func - <E: Equatable> (lhs: [E], rhs: [E]) -> [E] {
+    var result = lhs
+    result.removeFromRight(rhs)
+    return result
+}
+
+//MARK: Intersection
+
+//TODO: Documentation + complexity O(N)
+public func & <E: Equatable> (lhs: [E], rhs: [E]) -> [E] {
+    return lhs.intersection(rhs)
+}
+
+//TODO: Documentation + complexity O(N)
+public func & <E: Hashable> (lhs: [E], rhs: [E]) -> [E] {
+    return lhs.intersection(rhs)
+}

@@ -62,10 +62,14 @@ public extension Dictionary {
     }
 }
 
+//MARK: Union
+
 ///Returns a new dictionary containing the union of lhs and rhs
 public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
     return lhs.union(rhs)
 }
+
+//MARK: Difference
 
 /**
  Returns the difference between lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.
@@ -76,4 +80,19 @@ public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
  */
 public func - <K,V: Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
     return Dictionary(lhs.difference(rhs, predicate: ==))
+}
+
+
+//MARK: Intersection
+
+/**
+ Intersects lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.
+ 
+ - returns: A new dictionary containing the common elements of lhs and rhs
+ 
+ - Note: Complexity is O(N^2)
+ */
+
+public func & <K,V:Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
+    return Dictionary(lhs.intersection(rhs, predicate: ==))
 }
