@@ -10,6 +10,13 @@ import Foundation
 
 public extension Float {
     
+    /**
+     Returns a random Float between min..<max
+     
+     - parameters:
+       - min: lower bound
+       - max: upper bound
+     */
     static func random(min: Float = 0, max: Float) -> Float {
         let diff = max - min;
         let rand = Float(arc4random() % (UInt32(RAND_MAX) + 1))

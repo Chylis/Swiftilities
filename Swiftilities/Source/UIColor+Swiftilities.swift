@@ -13,9 +13,7 @@ import UIKit
 
 public extension UIColor {
     
-    /**
-     * Creates a color from hex
-     */
+    ///Creates a color from hex
     convenience init(hexString: String) {
         // Thanks http://stackoverflow.com/a/33397427/1136081
         let hex = hexString.stringByTrimmingCharactersInSet(

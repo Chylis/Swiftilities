@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MutableCollectionType provides access to set-subscript
 public extension MutableCollectionType where Index: RandomAccessIndexType {
     
     ///Randomly shuffles the elements in self

@@ -10,6 +10,13 @@ import Foundation
 
 public extension Double {
     
+    /**
+     Returns a random Double between min..<max
+     
+     - parameters:
+       - min: lower bound
+       - max: upper bound
+     */
     static func random(min: Double = 0, max: Double) -> Double {
         let diff = max - min;
         let rand = Double(arc4random() % (UInt32(RAND_MAX) + 1))

@@ -33,31 +33,31 @@ public extension Array where Element: Equatable {
     
     /**
      Removes each element in 'elements' from self
-     
+     - parameter elements: The elements to remove from self
+     - returns: An array containing all removed elements
      - Note: Complexity is O(N^2)
      */
-    mutating func removeElements(elements: [Element]) {
-        elements.forEach { removeElement($0) }
+    mutating func removeElements(elements: [Element]) -> [Element] {
+        return elements.flatMap { removeElement($0) }
     }
     
     
     ///Starting from the end of the array, removes and returns the first occurrence of element, or nil if no element was removed
     mutating func removeElementFromEnd(element: Element) -> Element? {
-        var result: [Element] = reverse()
-        guard let removed = result.removeElement(element) else { return nil }
-        self = result.reverse()
-        return removed
+        return removeElementsFromEnd([element]).first
     }
     
     /**
      Starting from the end of self, removes each element in 'elements' from self
-     
-     - parameter elements: Elements to be removed
-     
+     - parameter elements: The elements to be removed from self
+     - returns: An array containing all removed elements
      - Note: Complexity is O(N^2)
      */
-    mutating func removeElementsFromEnd(elements: [Element]) {
-        elements.forEach { removeElementFromEnd($0) }
+    mutating func removeElementsFromEnd(elements: [Element]) -> [Element] {
+        var result: [Element] = reverse()
+        let removed = elements.flatMap { result.removeElement($0) }
+        self = result.reverse()
+        return removed
     }
 }
 
@@ -80,9 +80,7 @@ public func - <E: Equatable> (array: [E], element: E) -> [E] {
 
 /**
  Starting from the end of 'lhs', removes each element in 'rhs'.
- 
  - returns: a new array with the elements in 'rhs' removed
- 
  - Note: Complexity is O(N^2)
  */
 public func - <E: Equatable> (lhs: [E], rhs: [E]) -> [E] {

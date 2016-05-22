@@ -88,6 +88,14 @@ class SequenceTypeTests: XCTestCase {
         let arrayOfEquatables3: [Range<Int>] = [0..<1,0..<2,0..<3,0..<4]
         let arrayOfEquatables4: [Range<Int>] = [0..<1,0..<2,0..<3]
         XCTAssertEqual(arrayOfEquatables3.difference(arrayOfEquatables4), [0..<4])
+        
+        //Test difference of sequences with different types
+        let intArray : [Int] = [1,1,2,2,3,3]
+        let stringArray : [String] = ["1","2"]
+        let diff: [Int] = intArray.difference(stringArray) { (sourceElement: Int, otherElement: String) in
+            sourceElement == Int(otherElement)!
+        }
+        XCTAssertEqual(diff, [3,3])
     }
     
     func testHashableDifference() {
@@ -134,6 +142,14 @@ class SequenceTypeTests: XCTestCase {
         XCTAssertEqual([0..<1,0..<2,0..<3,0..<4].intersection([0..<1,0..<2,0..<3]), [0..<1,0..<2,0..<3])
         XCTAssertEqual([0..<1,0..<2,0..<2,0..<4].intersection([0..<1,0..<2,0..<3]), [0..<1,0..<2,0..<2])
         XCTAssertEqual([1,2,3].intersection(["1","2"], predicate: { $0 == Int($1)! }), [1,2])
+        
+        //Test intersecting sequences of different types
+        let intArray: [Int] = [1,1,2,2,3,3]
+        let stringArray: [String] = ["1","2"]
+        let commonElements: [Int] = intArray.intersection(stringArray) { (sourceElement: Int, otherElement: String) in
+            sourceElement == Int(otherElement)!
+        }
+        XCTAssertEqual(commonElements, [1,1,2,2])
     }
     
     func testHashableIntersect() {

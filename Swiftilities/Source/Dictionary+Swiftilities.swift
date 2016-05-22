@@ -11,14 +11,18 @@ import Foundation
 public extension Dictionary {
     
     /**
-     * Get: Returns value for key if key is present, else returns default value
-     * Set: Sets the received value for the key. 
-     *
-     * Example get: dict["age", default: 0]
-     * Returns default value 0 if key "age" is not present
      
-     * Example set: dict["age", default: 0] += 1
-     * Value for key "age" is either "existing value + 1" or "default value (i.e. 0) + 1" key if "age" is not present
+     Get: Returns value for key if key is present, else returns default value
+     ````
+     //Returns value for key "age" or 0 if key "age" is not present
+     dict["age", default: 0]
+     ````
+     
+     Set: Sets the received value for the key.
+     ````
+     //Sets value for key "age" to "existing value + 1" or if key "age" is not present: "default value + 1 (i.e. 0 + 1)"
+     dict["age", default: 0] += 1
+     ````
      */
     subscript(key: Key, default value: Value) -> Value {
         get {
@@ -75,7 +79,6 @@ public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
  Returns the difference between lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.
  
  - returns: a new dictionary containing the difference between lhs and rhs
- 
  - Note: Complexity is O(N^2)
  */
 public func - <K,V: Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {

@@ -16,6 +16,14 @@ public extension SequenceType {
      - parameter transform: A closure that transforms an element into a key value pair.
      
      - returns: A new dictionary
+     
+     Example usage:
+     ````
+     let array: [Int] = [0,1,2,3]
+     let dict: [String:Int] = array.toDictionary { element in
+       return (String(element), element)
+     }
+     ````
      */
     func toDictionary<K,V>(@noescape transform:
         (element: Generator.Element) throws -> (key: K, value: V)?) rethrows -> [K:V] {
@@ -46,18 +54,21 @@ public extension SequenceType {
     }
     
     /**
-     Calculates the difference between self and another sequence
+     Returns the difference between self and another sequence
      
      - parameter toRemove:  The sequence to perform the diff against
      - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality.
-     
      - returns: A new array containing all elements **(including duplicates)** in self that are not present in 'toRemove'. Order is maintained.
-     
      - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      
-     - Example Usage:
+     Example usage:
      ````
-     [1,2,3].difference(["1","2"], predicate: { $0 == Int($1)! }) // Returns [3]
+     let intArray: [Int] = [1,1,2,2,3,3]
+     let stringArray: [String] = ["1","2"]
+     let diff: [Int] = intArray.difference(stringArray) { (sourceElement: Int, otherElement: String) in
+       sourceElement == Int(otherElement)!
+     }
+     //diff equals [3,3]
      ````
      */
     func difference<S: SequenceType>(toRemove: S,
@@ -75,14 +86,17 @@ public extension SequenceType {
      
      - parameter other:     The sequence to intersect with
      - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality.
-     
      - returns: A new array containing all elements **(including duplicates)** that are present in both 'self' and 'other'. Order is maintained.
-     
      - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      
-     Example Usage:
+     Example usage:
      ````
-     [1,2,3].intersection(["1","2"], predicate: { $0 == Int($1)! }) // Returns [1,2]
+     let intArray: [Int] = [1,1,2,2,3,3]
+     let stringArray: [String] = ["1","2"]
+     let commonElements: [Int] = intArray.intersection(stringArray) { (sourceElement: Int, otherElement: String) in
+       sourceElement == Int(otherElement)!
+     }
+     //commonElements equals [1,1,2,2]
      ````
      */
     func intersection<S: SequenceType>(other: S,
@@ -100,9 +114,7 @@ public extension SequenceType {
      Filters out all duplicate elements while maintaining the order.
      
      - parameter predicate: Since the elements are not 'Equatable' it is up to the received 'predicate' closure to decide about element equality
-     
      - returns: a new array with no duplicate elements. Order is maintained.
-     
      - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      */
     func filterDuplicates(@noescape predicate: (Generator.Element, Generator.Element) throws -> Bool)
@@ -139,9 +151,7 @@ extension SequenceType where Generator.Element: Equatable {
      Calculates the difference between self and another sequence
      
      - parameter toRemove:  The sequence to perform the diff against
-
      - returns: A new array containing all elements **(including duplicates)** in self that are not present in 'toRemove'. Order is maintained.
-     
      - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      */
     func difference <S: SequenceType where S.Generator.Element == Generator.Element>
@@ -153,9 +163,7 @@ extension SequenceType where Generator.Element: Equatable {
      Intersects self with another sequence
      
      - parameter other: The sequence to intersect with
-     
      - returns: A new array containing all elements **(including duplicates)** that are present in both 'self' and 'other'. Order is maintained.
-     
      - Note: Complexity is O(N^2) due to the nested for-loops (filter and contains)
      */
     func intersection <S: SequenceType where S.Generator.Element == Generator.Element>

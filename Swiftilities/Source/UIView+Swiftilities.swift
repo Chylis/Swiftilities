@@ -12,9 +12,7 @@ import UIKit
 
 public extension UIView {
     
-    /**
-     * Traverses the tree of subviews and reports ambigious layout
-     */
+    ///Traverses the tree of subviews and reports ambigious layout
     func reportAmbiguity() {
         for subview in subviews {
             if subview.hasAmbiguousLayout() {
@@ -27,9 +25,7 @@ public extension UIView {
         }
     }
     
-    /**
-     * Traverses the tree of subviews and lists each view's constraints
-     */
+    ///Traverses the tree of subviews and lists each view's constraints
     func listConstraints() {
         for subview in subviews {
             let arr1 = subview.constraintsAffectingLayoutForAxis(.Horizontal)
@@ -42,9 +38,7 @@ public extension UIView {
         }
     }
     
-    /**
-     * Centers the received subview
-     */
+    ///Centers the received subview in self
     func centerSubview(subview: UIView) {
         if subview.superview == nil {
             addSubview(subview)
@@ -65,7 +59,7 @@ public extension UIView {
 public extension UIView {
     
     /**
-     * Loads a view from a nib
+     Loads a view from a nib
      - parameter nibName: The name of the nib containing the view. Defaults to the name of the view class.
      - returns: The loaded view
      */
@@ -76,7 +70,7 @@ public extension UIView {
     }
     
     /**
-     * Attempts to load a view from a nib
+     Attempts to load a view from a nib
      - parameter nibName: The name of the nib containing the view. Defaults to the name of the view class.
      - returns: The loaded view or nil if no view in the nib could not be loaded as 'T'
      */
@@ -112,9 +106,9 @@ public extension UIView {
 public extension UIView {
     
     /**
-     * Travels down the view's hierarchy and applies the received predicate on 
-     * each view until a match is found, or until the entire hierarchy is traversed.
-     * Returns the first view that returns true, or nil if no such view is found.
+     Travels down the view's hierarchy in search for a view that matches the received predicate
+     - parameter predicate: A closure that is applied on each view until a view returns true
+     - returns: the first view for which the predicate returns true, or nil if no such view is found.
      */
     func findViewMatching(@noescape predicate: UIView throws -> Bool)
         rethrows -> UIView? {

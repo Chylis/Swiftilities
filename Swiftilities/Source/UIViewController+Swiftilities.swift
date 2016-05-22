@@ -10,17 +10,12 @@ import Foundation
 
 public extension UIViewController {
     
-    /**
-     * Utility method for simple dismissal
-     */
+    ///Utility method for simple dismissal
     func dismiss(animated: Bool = true) {
         presentingViewController?.dismissViewControllerAnimated(animated, completion: nil)
     }
     
-    
-    /**
-     * Travels the chain of presented view controllers and returns the topmost view controller
-     */
+    ///Travels the chain of presented view controllers and returns the topmost view controller
     func currentlyPresentedViewController() -> UIViewController {
         var current = self
         

@@ -35,11 +35,11 @@ public final class NibContainerView: UIView {
     }
     
     /**
-     * Creates a new instance and loads a view of the received class and adds it as a subview.
+     Loads a view of the received view class and adds it as a subview.
      
      - parameters:
-     - viewClass: The class of the view to load.
-     - nibName: The name of the nib containing the view.
+       - viewClass: The class of the view to load.
+       - nibName: The name of the nib containing the view.
      Only required if the nib name differs from the name of the view class.
      */
     public convenience init<T: UIView>(viewClass: T.Type,
@@ -55,11 +55,11 @@ public final class NibContainerView: UIView {
     //MARK: Public
     
     /**
-     * Loads a view of the received class and adds it as a subview
+     Loads a view of the received class and adds it as a subview
      
      - parameters:
-     - viewClass: The class of the view to load
-     - nibName: The name of the nib containing the view.
+       - viewClass: The class of the view to load
+       - nibName: The name of the nib containing the view.
      Only required if the nib name differs from the name of the view class.
      */
     public func setViewClass<T: UIView>(viewClass: T.Type,
@@ -71,12 +71,13 @@ public final class NibContainerView: UIView {
     
     /**
      Returns the contained view as T
-     - throws: ClassMismatch error if the contained view is not of type T
+     - throws: NibContainerViewError.ClassMismatch if the contained view is not of type T
      */
     public func view<T: UIView>() throws -> T {
-        if let view = contentView as? T {
-            return view
+        guard let view = contentView as? T else {
+            throw NibContainerViewError.ClassMismatch
         }
-        throw NibContainerViewError.ClassMismatch
+        
+        return view
     }
 }
