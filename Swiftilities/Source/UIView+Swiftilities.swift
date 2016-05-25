@@ -99,6 +99,56 @@ public extension UIView {
         layer.addAnimation(transition, forKey: nil)
         CATransaction.commit()
     }
+    
+    
+    /**
+     Repeats a view animation 'times' number of times
+     
+     - parameter times:           Number of times to perform the animation
+     - parameter duration:        The total duration of the animations, measured in seconds. If you specify a negative value or 0, the changes are made without animating them.
+     - parameter after:           The amount of time (measured in seconds) to wait before beginning the animations. Specify a value of 0 to begin the animations immediately.
+     - parameter options:         A mask of options indicating how you want to perform the animations. For a list of valid constants, see UIViewAnimationOptions.
+     - parameter animations:      A block object containing the changes to commit to the views. This is where you programmatically change any animatable properties of the views in your view hierarchy. This block takes no parameters and has no return value. This parameter must not be NULL.
+     - parameter maybeCompletion: A block object to be executed when the animation sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the animations actually finished before the completion handler was called. If the duration of the animation is 0, this block is performed at the beginning of the next run loop cycle. This parameter may be NULL.
+     
+     Usage example:
+     ````
+     UIView.animateWithRepetition(3, duration: 0.75, after: 0, options: [.Autoreverse],
+     animations: { self.view.transform = CGAffineTransformMakeScale(5.5, 5.5) }) { done in
+       if done {
+         self.view.transform = CGAffineTransformIdentity
+       }
+     }
+     ````
+     */
+    class func animateWithRepetition(times:Int,
+                                     duration: NSTimeInterval,
+                                     after: NSTimeInterval,
+                                     options: UIViewAnimationOptions,
+                                     animations: (() -> ()),
+                                     maybeCompletion: (Bool -> ())? = nil) {
+        
+        //Internal helper method that uses tail recursion and a counter to chain the individual animations.
+        //The delay call unwinds the call stack and works around possible drawing glitches.
+        func animate(t:Int, _ dur: NSTimeInterval, _ del: NSTimeInterval,
+                     _ opts: UIViewAnimationOptions, _ anims: (() -> ()),
+                       _ comp: (Bool -> ())?) {
+            
+            UIView.animateWithDuration(dur, delay: del, options: opts, animations: anims) { done in
+                if let completion = comp {
+                    completion(done)
+                }
+                
+                if t > 0 {
+                    delay(0) {
+                        animate(t-1, dur, del, opts, anims, comp)
+                    }
+                }
+            }
+        }
+        
+        animate(times-1, duration, after, options, animations, maybeCompletion)
+    }
 }
 
 //MARK: Searching
@@ -112,17 +162,17 @@ public extension UIView {
      */
     func findViewMatching(@noescape predicate: UIView throws -> Bool)
         rethrows -> UIView? {
-        
-        if try predicate(self) {
-            return self
-        }
-        
-        for subview in subviews {
-            if let match =  try subview.findViewMatching(predicate) {
-                return match
+            
+            if try predicate(self) {
+                return self
             }
-        }
-        
-        return nil
+            
+            for subview in subviews {
+                if let match =  try subview.findViewMatching(predicate) {
+                    return match
+                }
+            }
+            
+            return nil
     }
 }
