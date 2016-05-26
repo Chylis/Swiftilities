@@ -65,7 +65,7 @@ public extension UIView {
      */
     class func fromNib<T : UIView>(nibName: String = String(T)) -> T {
         let view: T? = fromNib(nibName)
-        assert(view != nil, "Error loading view '\(String(T))' from nib '\(nibName)'")
+        precondition(view != nil, "Error loading view '\(String(T))' from nib '\(nibName)'")
         return view!
     }
     
@@ -77,14 +77,7 @@ public extension UIView {
     class func fromNib<T : UIView>(nibName: String = String(T)) -> T? {
         let bundle = NSBundle(forClass: T.self)
         let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil)
-        
-        for view in nibViews {
-            if let viewAsT = view as? T {
-                return viewAsT
-            }
-        }
-        
-        return nil
+        return nibViews.findElement {$0 is T } as? T
     }
 }
 
