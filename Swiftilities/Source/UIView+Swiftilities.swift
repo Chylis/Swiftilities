@@ -40,10 +40,7 @@ public extension UIView {
     
     ///Centers the received subview in self
     func centerSubview(subview: UIView) {
-        if subview.superview == nil {
-            addSubview(subview)
-        }
-        
+        addSubview(subview)
         subview.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([
             subview.widthAnchor.constraintEqualToAnchor(widthAnchor),
@@ -85,10 +82,19 @@ public extension UIView {
 
 public extension UIView {
     
-    func animateTransition(duration: CFTimeInterval = 0.25) {
+    /**
+     Performs a transition animation in a new transaction
+     
+     - parameter duration:   Duration of the animation. Defaults to 0.25 ms
+     - parameter completion: Completion block that is executed after the transaction has been committed
+     */
+    func animateTransition(duration: CFTimeInterval = 0.25, completion: (() -> ())? = nil) {
         CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        
         let transition = CATransition()
         transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
         layer.addAnimation(transition, forKey: nil)
         CATransaction.commit()
     }

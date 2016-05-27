@@ -1,6 +1,8 @@
 # Swiftilities
 
-Swift utilities that help me in write short, expressive and clear code.
+Swift utilities that help me write expressive, declarative and clear code.
+
+
 
 Credits to: 
 - 'Advanced Swift' - Chris Eidhof
