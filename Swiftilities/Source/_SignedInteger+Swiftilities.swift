@@ -1,5 +1,5 @@
 //
-//  _SignedIntegerType+Swiftilities.swift
+//  _SignedInteger+Swiftilities.swift
 //  Swiftilities
 //
 //  Created by Magnus Eriksson on 13/05/16.
@@ -8,10 +8,7 @@
 
 import Foundation
 
-
-
-//This extension works on any signed integer type
-public extension _SignedIntegerType {
+public extension _SignedInteger {
     
     /**
      Returns a random number between 0..<max

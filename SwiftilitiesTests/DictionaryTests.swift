@@ -25,21 +25,28 @@ class DictionaryTests: XCTestCase {
         XCTAssertEqual(101, dict[77])
     }
     
-    func testMerge() {
+    func testUnion() {
         var dict1 = [0:0,1:1,2:2,3:3]
         let dict2 = [4:4,5:5,6:6,7:7]
-        dict1.merge(dict2)
+        dict1.union(with: dict2)
         
         for int in 0...7 {
             XCTAssertEqual(int, dict1[int])
         }
     }
     
-    func testUnion() {
+    func testUnioned() {
+        let empty: [Int:Int] = [:]
         let dict1 = [0:0,1:1,2:2,3:3]
         let dict2 = [4:4,5:5,6:6,7:7]
-        let dict3 = dict1.union(dict2)
+        let dict3 = dict1.unioned(with: dict2)
         
+        //Test union with one or more empty dictionaries
+        XCTAssertEqual(empty.unioned(with: empty), empty)
+        XCTAssertEqual(dict1.unioned(with: empty), dict1)
+        XCTAssertEqual(empty.unioned(with: dict1), dict1)
+        
+        //Test union with non-empty dictionaries
         for int in 0...7 {
             XCTAssertEqual(int, dict3[int])
         }
@@ -74,7 +81,7 @@ class DictionaryTests: XCTestCase {
     
     func testMapValues() {
         let dict1 = [0:0,1:1,2:2,3:3]
-        let dict2: [Int:String] = dict1.mapValues { String($0) }
+        let dict2: [Int:String] = dict1.mappingValues { String($0) }
         
         for (key,value) in dict1 {
             XCTAssertEqual(dict2[key], String(value))

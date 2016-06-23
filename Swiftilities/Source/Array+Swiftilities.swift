@@ -16,9 +16,9 @@ public extension Array {
     }
     
     ///Removes the elements and the received indices
-    mutating func removeAtIndexes(ixs:[Int]) {
-        for i in ixs.sort(>) {
-            removeAtIndex(i)
+    mutating func remove(at indices:[Int]) {
+        for i in indices.sorted(by: >) {
+            remove(at: i)
         }
     }
 }
@@ -26,9 +26,11 @@ public extension Array {
 public extension Array where Element: Equatable {
     
     ///Removes and returns the first occurrence of element, or nil if no element was removed
-    mutating func removeElement(element: Element) -> Element? {
-        guard let idx = indexOf(element) else { return nil }
-        return removeAtIndex(idx)
+    mutating func remove(_ element: Element) -> Element? {
+        guard let idx = index(of: element) else {
+            return nil
+        }
+        return remove(at: idx)
     }
     
     /**
@@ -37,14 +39,14 @@ public extension Array where Element: Equatable {
      - returns: An array containing all removed elements
      - Note: Complexity is O(N^2)
      */
-    mutating func removeElements(elements: [Element]) -> [Element] {
-        return elements.flatMap { removeElement($0) }
+    mutating func remove(_ elements: [Element]) -> [Element] {
+        return elements.flatMap { remove($0) }
     }
     
     
     ///Starting from the end of the array, removes and returns the first occurrence of element, or nil if no element was removed
-    mutating func removeElementFromEnd(element: Element) -> Element? {
-        return removeElementsFromEnd([element]).first
+    mutating func removeFromEnd(_ element: Element) -> Element? {
+        return removeFromEnd([element]).first
     }
     
     /**
@@ -53,10 +55,10 @@ public extension Array where Element: Equatable {
      - returns: An array containing all removed elements
      - Note: Complexity is O(N^2)
      */
-    mutating func removeElementsFromEnd(elements: [Element]) -> [Element] {
-        var result: [Element] = reverse()
-        let removed = elements.flatMap { result.removeElement($0) }
-        self = result.reverse()
+    mutating func removeFromEnd(_ elements: [Element]) -> [Element] {
+        var result: [Element] = reversed()
+        let removed = elements.flatMap { result.remove($0) }
+        self = result.reversed()
         return removed
     }
 }
@@ -74,7 +76,7 @@ public func + <E> (array: [E], element: E) -> [E] {
 ///Returns a new array with the last occurence of 'element' removed
 public func - <E: Equatable> (array: [E], element: E) -> [E] {
     var result = array
-    result.removeElementFromEnd(element)
+    _ = result.removeFromEnd(element)
     return result
 }
 
@@ -85,6 +87,6 @@ public func - <E: Equatable> (array: [E], element: E) -> [E] {
  */
 public func - <E: Equatable> (lhs: [E], rhs: [E]) -> [E] {
     var result = lhs
-    result.removeElementsFromEnd(rhs)
+    _ = result.removeFromEnd(rhs)
     return result
 }

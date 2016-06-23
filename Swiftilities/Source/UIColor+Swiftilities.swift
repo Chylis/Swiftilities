@@ -16,11 +16,10 @@ public extension UIColor {
     ///Creates a color from hex
     convenience init(hexString: String) {
         // Thanks http://stackoverflow.com/a/33397427/1136081
-        let hex = hexString.stringByTrimmingCharactersInSet(
-            NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)
@@ -34,5 +33,10 @@ public extension UIColor {
         }
         
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+    }
+    
+    ///Creates a color with random RGB values
+    class var random: UIColor {
+        return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
     }
 }

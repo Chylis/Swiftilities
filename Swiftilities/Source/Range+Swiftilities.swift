@@ -9,11 +9,12 @@
 import Foundation
 
 
-extension Range {
-    
-    ///Generates random numbers within any range of indices
-    var random: Element {
-        let randomDistance = Index.Distance.random(max:count)
-        return startIndex.advancedBy(randomDistance)
-    }
-}
+//TODO: FIX (Temporary fix: Moved to 'MutableCollection::randomIndex()')
+//extension Range {
+//    
+//    ///Generates random numbers within any range of indices
+//    var random: Element {
+//        let randomDistance = Index.Distance.random(max:count)
+//        return startIndex.advancedBy(randomDistance)
+//    }
+//}

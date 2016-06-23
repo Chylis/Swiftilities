@@ -11,7 +11,7 @@ import XCTest
 
 class ArrayTests: XCTestCase {
     
-    func testSafeSubscript() {
+    func testSafeSubscript() {        
         let array = [0,1,2,3,4,5,6,7,8,9,10]
         XCTAssertEqual(array[safe: 0], 0)
         XCTAssertEqual(array[safe: 5], 5)
@@ -19,117 +19,137 @@ class ArrayTests: XCTestCase {
         XCTAssertNil(array[safe: 66], "")
     }
     
+    func testShuffleInPlace() {
+        let array = [0,1,2,3,4,5,6,7,8,9,10]
+        var shuffled = array
+        shuffled.shuffle()
+        
+        XCTAssertNotEqual(array, shuffled)
+        for elem in array {
+            XCTAssertTrue(shuffled.contains(elem))
+        }
+    }
+    
+    func testShuffled() {
+        let array = [0,1,2,3,4,5,6,7,8,9,10]
+        let shuffled = array.shuffled()
+        XCTAssertNotEqual(array, shuffled)
+        for elem in array {
+            XCTAssertTrue(shuffled.contains(elem))
+        }
+    }
+    
     func testMultipleRemoval() {
         var array = [0,1,2,3,4,5,6,7,8,9,10]
-        array.removeAtIndexes([0,2,4,6,8,10])
+        array.remove(at: [0,2,4,6,8,10])
         XCTAssertEqual([1,3,5,7,9], array)
         
-        array.removeAtIndexes([0,1,2,3])
+        array.remove(at: [0,1,2,3])
         XCTAssertEqual([9], array)
-        
-        array.removeAtIndexes([0])
+
+        array.remove(at: [0])
         XCTAssertEqual([], array)  
     }
     
     func testRemoveElement() {
         //Test remove nonexisting element
         var result = [1,2,3,4]
-        XCTAssertEqual(nil, result.removeElement(6))
+        XCTAssertEqual(nil, result.remove(6))
         XCTAssertEqual([1,2,3,4], result)
         
         //Test remove existing element
         result = [1,2,3,4]
-        XCTAssertEqual(4, result.removeElement(4))
+        XCTAssertEqual(4, result.remove(4))
         XCTAssertEqual([1,2,3], result)
         
         //Test removing existing duplicate element
         result = [4,1,2,3,4]
-        XCTAssertEqual(4, result.removeElement(4))
+        XCTAssertEqual(4, result.remove(4))
         XCTAssertEqual([1,2,3,4], result)
     }
     
     func testRemoveSeveralElements() {
         //Test remove empty array
         var result = [1,2,3,4]
-        XCTAssertEqual([] as [Int], result.removeElements([]))
+        XCTAssertEqual([] as [Int], result.remove([]))
         XCTAssertEqual([1,2,3,4], result)
         
         result = []
-        XCTAssertEqual([] as [Int], result.removeElements([]))
+        XCTAssertEqual([] as [Int], result.remove([]))
         XCTAssertEqual([], result)
         
         result = []
-        XCTAssertEqual([] as [Int], result.removeElements([1,2,3,4]))
+        XCTAssertEqual([] as [Int], result.remove([1,2,3,4]))
         XCTAssertEqual([], result)
 
         //Test remove nonexisting elements
         result = [1,2,3,4]
-        XCTAssertEqual([] as [Int], result.removeElements([6]))
+        XCTAssertEqual([] as [Int], result.remove([6]))
         XCTAssertEqual([1,2,3,4], result)
         
         //Test remove existing elements
         result = [1,2,3,4]
-        XCTAssertEqual([4], result.removeElements([4]))
+        XCTAssertEqual([4], result.remove([4]))
         XCTAssertEqual([1,2,3], result)
         
         result = [1,2,3,4]
-        XCTAssertEqual([1,4], result.removeElements([1,4]))
+        XCTAssertEqual([1,4], result.remove([1,4]))
         XCTAssertEqual([2,3], result)
         
         //Test removing existing duplicate element
         result = [4,1,4,2,3,4]
-        XCTAssertEqual([4,4], result.removeElements([4,4,5]))
+        XCTAssertEqual([4,4], result.remove([4,4,5]))
         XCTAssertEqual([1,2,3,4], result)
     }
     
     func testRemoveSingleElementFromEnd() {
         //Test remove nonexisting element
         var result = [1,2,3,4]
-        XCTAssertEqual(nil, result.removeElementFromEnd(6))
+        XCTAssertEqual(nil, result.removeFromEnd(6))
         XCTAssertEqual([1,2,3,4], result)
         
         //Test remove existing element
         result = [1,2,3,4]
-        XCTAssertEqual(4, result.removeElementFromEnd(4))
+        XCTAssertEqual(4, result.removeFromEnd(4))
         XCTAssertEqual([1,2,3], result)
         
         //Test removing existing duplicate element
         result = [4,1,2,3,4]
-        XCTAssertEqual(4, result.removeElementFromEnd(4))
+        XCTAssertEqual(4, result.removeFromEnd(4))
         XCTAssertEqual([4,1,2,3], result)
     }
     
     func testRemoveSeveralElementsFromEnd() {
         //Test remove empty array
         var result = [1,2,3,4]
-        XCTAssertEqual([] as [Int], result.removeElementsFromEnd([]))
+        XCTAssertEqual([] as [Int], result.removeFromEnd([]))
         XCTAssertEqual([1,2,3,4], result)
         
         result = []
-        XCTAssertEqual([] as [Int], result.removeElementsFromEnd([]))
+        XCTAssertEqual([] as [Int], result.removeFromEnd([]))
         XCTAssertEqual([], result)
         
         result = []
-        XCTAssertEqual([] as [Int], result.removeElementsFromEnd([1,2,3,4]))
+        XCTAssertEqual([] as [Int], result.removeFromEnd([1,2,3,4]))
         XCTAssertEqual([], result)
         
         //Test remove nonexisting elements
         result = [1,2,3,4]
-        XCTAssertEqual([] as [Int], result.removeElementsFromEnd([6]))
+        XCTAssertEqual([] as [Int], result.removeFromEnd([6]))
         XCTAssertEqual([1,2,3,4], result)
         
         //Test remove existing elements
         result = [1,2,3,4]
-        XCTAssertEqual([4], result.removeElementsFromEnd([4]))
+        XCTAssertEqual([4], result.removeFromEnd([4]))
         XCTAssertEqual([1,2,3], result)
         
         result = [1,2,3,4]
-        XCTAssertEqual([1,4], result.removeElementsFromEnd([1,4]))
+        XCTAssertEqual([1,4], result.removeFromEnd([1,4]))
         XCTAssertEqual([2,3], result)
         
         //Test removing existing duplicate element
         result = [4,1,4,2,3,4]
-        XCTAssertEqual([4,4], result.removeElementsFromEnd([4,4,5]))
+        XCTAssertEqual([4,4], result.removeFromEnd([4,4,5]))
         XCTAssertEqual([4,1,2,3], result)
     }
     
@@ -144,7 +164,8 @@ class ArrayTests: XCTestCase {
         
         //Test removing empty array
         XCTAssertEqual([1,2,3,4] - [], [1,2,3,4])
-        XCTAssertEqual([] - [], [])
+        let empty: [Int] = []
+        XCTAssertEqual(empty - [], [])
         XCTAssertEqual([] - [1,2,3], [])
         
         //Test removing single element in array

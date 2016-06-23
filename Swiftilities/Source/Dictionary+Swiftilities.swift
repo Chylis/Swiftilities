@@ -35,32 +35,29 @@ public extension Dictionary {
     }
     
     ///Creates a new dictionary from a sequence of key-value pairs
-    init<S: SequenceType
-        where S.Generator.Element == (Key,Value)>(_ sequence: S) {
+    init<S: Sequence>(sequence: S) where S.Iterator.Element == (key: Key, value: Value) {
         self = [:]
-        merge(sequence)
+        union(with: sequence)
     }
     
     ///Merges self with the received sequence type
-    mutating func merge<S: SequenceType
-        where S.Generator.Element == (Key,Value)>(other: S) {
+    mutating func union<S: Sequence> (with other: S) where S.Iterator.Element == (key: Key, value: Value) {
         for (k, v) in other {
             self[k] = v
         }
     }
     
     ///Returns a new dictionary containing the union between self and other
-    func union<S: SequenceType
-        where S.Generator.Element == (Key,Value)>(other: S) -> [Key:Value] {
+    func unioned<S: Sequence> (with other: S) -> [Key:Value] where S.Iterator.Element == (key: Key, value: Value) {
         var union = self
-        union.merge(other)
+        union.union(with: other)
         return union
     }
     
     ///Returns a new dictionary, keeping the same keys but transforming the values
-    func mapValues<NewValue>(@noescape transform: Value throws -> NewValue)
+    func mappingValues<NewValue>(transform: (Value) throws -> NewValue)
         rethrows -> [Key:NewValue] {
-            return try Dictionary<Key, NewValue>(map { (key, value) -> (Key, NewValue) in
+            return try Dictionary<Key, NewValue>(sequence: map { (key, value) -> (Key, NewValue) in
                 return (key, try transform(value))
                 })
     }
@@ -70,7 +67,7 @@ public extension Dictionary {
 
 ///Returns a new dictionary containing the union of lhs and rhs
 public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
-    return lhs.union(rhs)
+    return lhs.unioned(with: rhs)
 }
 
 //MARK: Difference
@@ -82,5 +79,6 @@ public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
  - Note: Complexity is O(N^2)
  */
 public func - <K,V: Equatable> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
-    return Dictionary(lhs.difference(rhs, predicate: ==))
+    let diff = lhs.differenced(against: rhs, predicate: ==)
+    return Dictionary(sequence: diff)
 }
