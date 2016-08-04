@@ -144,10 +144,18 @@ class SequenceTests: XCTestCase {
     }
     
     func testHashableIntersect() {
+        let emptySet: [Int] = []
+        //Test empty intersect
+        XCTAssertEqual(emptySet.intersected(with: emptySet), emptySet)
+        
         //Test no intersecting elements
         XCTAssertEqual([1,1,2,3,4,5].intersected(with: [6,7,8,9,6]), [])
         XCTAssertEqual([].intersected(with: [77,-1,2,3,1,4,5,-1,5]), [])
         XCTAssertEqual([77,-1,2,3,1,4,5,-1,5].intersected(with: []), [])
+        
+        //Test intersect against self
+        XCTAssertEqual([1].intersected(with: [1]), [1])
+        XCTAssertEqual([1,1].intersected(with: [1]), [1,1])
         
         //Test intersecting elements, including duplicates
         XCTAssertEqual([77,-1,2,3,1,4,5,-1,5].intersected(with: [6,7,-1,8,9,77]), [77,-1,-1])
