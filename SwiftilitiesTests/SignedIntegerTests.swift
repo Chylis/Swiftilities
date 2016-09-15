@@ -10,6 +10,25 @@ import XCTest
 
 class SignedIntegerTests: XCTestCase {
     
+    func testRandomSameMinMaxValues() {
+        let min = 5
+        XCTAssertEqual(Int.random(min: min, max: min), min)
+    }
+    
+    func testRandomOverflowValues() {
+        let max = Int.max
+        let min = -1
+        //'Int.max' - '-1' == 'Int.max + 1' and exceeds Int.max ==> should thus return the min value
+        XCTAssertEqual(Int.random(min: min, max: max), min)
+    }
+    
+    func testRandomNegativeUpperBound() {
+        let min = -1
+        let max = -2
+        //'-2 - -1' == -1, and should therefore return the min value
+        XCTAssertEqual(Int.random(min: min, max: max), min)
+    }
+    
     func testClamp() {
         let min = -10
         let max = 10
