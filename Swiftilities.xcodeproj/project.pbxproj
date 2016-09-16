@@ -28,6 +28,8 @@
 		5F378A851CDF5D9F00BD9557 /* UIImage+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */; };
 		5F378A871CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A861CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift */; };
 		5F378A891CDF5E4900BD9557 /* Data+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A881CDF5E4900BD9557 /* Data+Swiftilities.swift */; };
+		5F3B33B21D8BF15D004BC1F5 /* Bool+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B33B11D8BF15C004BC1F5 /* Bool+Swiftilities.swift */; };
+		5F3B33B41D8BF1A7004BC1F5 /* BoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B33B31D8BF1A7004BC1F5 /* BoolTests.swift */; };
 		5F52C0BB1D53967200E7BD36 /* SignedIntegerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BA1D53967200E7BD36 /* SignedIntegerTests.swift */; };
 		5F52C0BD1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */; };
 		5F7E35A91CDDD803002FF0EB /* Swiftilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7E35A81CDDD803002FF0EB /* Swiftilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +73,8 @@
 		5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F378A861CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F378A881CDF5E4900BD9557 /* Data+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Swiftilities.swift"; sourceTree = "<group>"; };
+		5F3B33B11D8BF15C004BC1F5 /* Bool+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Swiftilities.swift"; sourceTree = "<group>"; };
+		5F3B33B31D8BF1A7004BC1F5 /* BoolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolTests.swift; sourceTree = "<group>"; };
 		5F52C0BA1D53967200E7BD36 /* SignedIntegerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedIntegerTests.swift; sourceTree = "<group>"; };
 		5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5FBF15601CEAFB4C00EA458F /* ArrayTests.swift */,
+				5F3B33B31D8BF1A7004BC1F5 /* BoolTests.swift */,
 				5FBF15621CEAFDE100EA458F /* CollectionTests.swift */,
 				5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */,
 				5F7E35B61CDDD803002FF0EB /* Info.plist */,
@@ -157,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5F378A7C1CDF588D00BD9557 /* Array+Swiftilities.swift */,
+				5F3B33B11D8BF15C004BC1F5 /* Bool+Swiftilities.swift */,
 				5F81CDF91CE64549001C43DE /* Collection+Swiftilities.swift */,
 				5F378A881CDF5E4900BD9557 /* Data+Swiftilities.swift */,
 				5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */,
@@ -318,6 +324,7 @@
 				5FDF06F11CEF0FF9006E3DBC /* Range+Swiftilities.swift in Sources */,
 				5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */,
 				5FDF06F31CEF1140006E3DBC /* MutableCollection+Swiftilities.swift in Sources */,
+				5F3B33B21D8BF15D004BC1F5 /* Bool+Swiftilities.swift in Sources */,
 				5F52C0BD1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift in Sources */,
 				5F81CDFE1CE64A2E001C43DE /* Float+Swiftilities.swift in Sources */,
 				5F81CE001CE64AD5001C43DE /* Double+Swiftilities.swift in Sources */,
@@ -334,6 +341,7 @@
 				5F52C0BB1D53967200E7BD36 /* SignedIntegerTests.swift in Sources */,
 				5FBF15631CEAFDE200EA458F /* CollectionTests.swift in Sources */,
 				5FBF15611CEAFB4C00EA458F /* ArrayTests.swift in Sources */,
+				5F3B33B41D8BF1A7004BC1F5 /* BoolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
