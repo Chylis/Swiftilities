@@ -152,6 +152,14 @@ public extension Sequence {
         clone.shuffle()
         return clone
     }
+    
+    ///Returns the last element that matches the received predicate
+    func last(where predicate: (Iterator.Element) throws -> Bool) rethrows -> Iterator.Element? {
+        for element in reversed() where try predicate(element) {
+            return element
+        }
+        return nil
+    }
 }
 
 

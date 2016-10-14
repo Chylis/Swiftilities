@@ -37,7 +37,20 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual([1,2,3,4].accumulated(0, +), [1,3,6,10])
         XCTAssertEqual([1,2,3,4].accumulated(0, -), [-1,-3,-6,-10])
         XCTAssertEqual(["1","2","3","4"].accumulated("0", +), ["01", "012", "0123", "01234"])
-        
+    }
+    
+    //MARK: Last
+    
+    func testNoMatchingLast() {
+        XCTAssertNil([].last { _ in return true })
+        XCTAssertNil([1,2,3].last { _ in return false })
+        XCTAssertNil([1,2,3].last { $0 == 4 })
+    }
+    
+    func testMatchingLast() {
+        XCTAssertEqual(3, [1,2,3].last { _ in return true })
+        XCTAssertEqual(2, [1,2,3].last { $0 == 2 })
+        XCTAssertEqual(2, [1,2,3].last { $0 % 2 == 0 })
     }
     
     //MARK: All-Predicate
