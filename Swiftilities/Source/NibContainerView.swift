@@ -17,7 +17,7 @@ public enum NibContainerViewError: Error {
 /// Access the nib-view by calling the 'view/1' method
 public final class NibContainerView: UIView {
     
-    //MARK: Properties
+    //MARK: - Properties
     
     private var viewClass: AnyClass = UIView.self
     
@@ -28,7 +28,7 @@ public final class NibContainerView: UIView {
         }
     }
     
-    //MARK: Initialisers
+    //MARK: - Initialisers
     
     public init() {
         super.init(frame: CGRect.zero)
@@ -52,7 +52,7 @@ public final class NibContainerView: UIView {
         self.init()
     }
     
-    //MARK: Public
+    //MARK: - Public
     
     /**
      Loads a view of the received class and adds it as a subview

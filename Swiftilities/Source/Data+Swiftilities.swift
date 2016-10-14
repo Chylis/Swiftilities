@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: Device Token
+//MARK: - Device Token
 
 public extension Data {
     

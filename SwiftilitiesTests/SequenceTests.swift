@@ -39,7 +39,7 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual(["1","2","3","4"].accumulated("0", +), ["01", "012", "0123", "01234"])
     }
     
-    //MARK: Last
+    //MARK: - Last
     
     func testNoMatchingLast() {
         XCTAssertNil([].last { _ in return true })
@@ -53,7 +53,7 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual(2, [1,2,3].last { $0 % 2 == 0 })
     }
     
-    //MARK: All-Predicate
+    //MARK: - All-Predicate
     
     func testAllPredicate() {
         let even = [0,2,4,6,8,10]
@@ -66,7 +66,7 @@ class SequenceTests: XCTestCase {
         XCTAssertFalse(mixed.all { $0 % 2 != 0 })
     }
     
-    //MARK: ToDictionary
+    //MARK: - ToDictionary
     
     func testToDictionary() {
         let array = [0,9,1,8,2,7,3,6,4,5]
@@ -80,7 +80,7 @@ class SequenceTests: XCTestCase {
         }
     }
     
-    //MARK: FilterDuplicates
+    //MARK: - FilterDuplicates
     
     func testEquatableDuplicates() {
         let uniques2 = [0..<1,0..<2,0..<3]
@@ -98,7 +98,7 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual(nonUniques.filteringDuplicates { $0 == $1 }, uniques)
     }
     
-    //MARK: Difference
+    //MARK: - Difference
     
     
     func testEquatableDifference() {
@@ -159,7 +159,7 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual(setDiff, customDiff)
     }
     
-    //MARK: Intersection
+    //MARK: - Intersection
     
     func testEquatableIntersect() {
         let arrayOfEquatables1: [Range<Int>] = Array(repeating:0..<Int.random(), count: 1000)
@@ -215,7 +215,7 @@ class SequenceTests: XCTestCase {
     }
     
     
-    //MARK: Internal helpers
+    //MARK: - Internal helpers
     
     private func randomIntArray(size: Int) -> [Int] {
         var randoms : [Int] = []

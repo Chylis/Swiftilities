@@ -34,6 +34,8 @@ public extension Dictionary {
         }
     }
     
+    
+    //NOTE: There exists a Swift-Evolution proposal to add a similar initialiser
     ///Creates a new dictionary from a sequence of key-value pairs
     init<S: Sequence>(sequence: S) where S.Iterator.Element == (key: Key, value: Value) {
         self = [:]
@@ -63,14 +65,14 @@ public extension Dictionary {
     }
 }
 
-//MARK: Union
+//MARK: - Union
 
 ///Returns a new dictionary containing the union of lhs and rhs
 public func + <K,V> (lhs: [K:V], rhs: [K:V]) -> [K:V] {
     return lhs.unioned(with: rhs)
 }
 
-//MARK: Difference
+//MARK: - Difference
 
 /**
  Returns the difference between lhs and rhs. Dictionaries are considered equal if they contain the same [key: value] pairs.

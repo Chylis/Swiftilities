@@ -9,7 +9,7 @@
 import UIKit
 
 
-//MARK: Utility initialisers
+//MARK: - Utility initialisers
 
 public extension UIColor {
     

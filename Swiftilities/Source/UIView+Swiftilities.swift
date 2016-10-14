@@ -8,7 +8,7 @@
 
 import UIKit
 
-//MARK: Layout Utilities.
+//MARK: - Layout Utilities.
 
 public extension UIView {
     
@@ -51,7 +51,7 @@ public extension UIView {
     }
 }
 
-//MARK: Nib instantiation
+//MARK: - Nib instantiation
 
 public extension UIView {
     
@@ -78,7 +78,7 @@ public extension UIView {
     }
 }
 
-//MARK: Animation
+//MARK: - Animation
 
 public extension UIView {
     
@@ -156,7 +156,7 @@ public extension UIView {
     }
 }
 
-//MARK: Searching
+//MARK: - Searching
 
 public extension UIView {
     

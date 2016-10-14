@@ -64,14 +64,14 @@ public extension Array where Element: Equatable {
 }
 
 
-//MARK: Add single element
+//MARK: - Add single element
 
 ///Returns a new array with 'element' appended to 'array'
 public func + <E> (array: [E], element: E) -> [E] {
     return array + [element]
 }
 
-//MARK: Removal
+//MARK: - Removal
 
 ///Returns a new array with the last occurence of 'element' removed
 public func - <E: Equatable> (array: [E], element: E) -> [E] {
