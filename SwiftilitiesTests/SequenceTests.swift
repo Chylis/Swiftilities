@@ -11,6 +11,35 @@ import XCTest
 
 class SequenceTests: XCTestCase {
     
+    //MARK: - Accumulated
+    
+    func testEmptyAccumulated() {
+        let empty: [Int] = []
+        let accumulated = empty.accumulated(0) { previous, current in
+            return previous + current
+        }
+        
+        XCTAssertEqual([], accumulated)
+    }
+    
+    func testThrowsAccumulated() {
+        enum AccumulatedError: Error {
+            case testThrow
+        }
+        
+        XCTAssertThrowsError(
+            try [1, 2].accumulated(0) { previous, current in
+            throw AccumulatedError.testThrow
+        })
+    }
+    
+    func testAccumulated() {
+        XCTAssertEqual([1,2,3,4].accumulated(0, +), [1,3,6,10])
+        XCTAssertEqual([1,2,3,4].accumulated(0, -), [-1,-3,-6,-10])
+        XCTAssertEqual(["1","2","3","4"].accumulated("0", +), ["01", "012", "0123", "01234"])
+        
+    }
+    
     //MARK: All-Predicate
     
     func testAllPredicate() {

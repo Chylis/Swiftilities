@@ -11,10 +11,29 @@ import Foundation
 public extension Sequence {
     
     /**
+     Combine elements into an array of running values (like reduce, but returning an array of each interim combination).
+     
+     - parameter initialValue: The initial value to be supplied to the received closure
+     - parameter nextPartialResult: A closure, applied to each element in the sequence, whose return value is added to the resulting array
+     - returns: An array containing each result of the 'nextPartialResult' closure
+     
+     Example usage:
+     ````
+     let accumulated = [1,2,3,4].accumulated(0, +) //[1, 3, 6, 10]
+     ````
+     */
+    func accumulated<Result>(_ initialValue: Result,
+                    _ nextPartialResult: (Result, Iterator.Element) throws -> Result) rethrows -> [Result] {
+        var running = initialValue
+        return try map { next in
+            running = try nextPartialResult(running, next)
+            return running
+        }
+    }
+    
+    /**
      Create a dictionary by applying the received closure on each element in self
-     
      - parameter transform: A closure that transforms an element into a key value pair.
-     
      - returns: A new dictionary
      
      Example usage:
