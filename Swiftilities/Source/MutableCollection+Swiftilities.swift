@@ -8,23 +8,15 @@
 
 import Foundation
 
-//MutableCollectionType provides access to set-subscript
 public extension MutableCollection where Self: RandomAccessCollection {
     
     mutating func shuffle() {
         var currentIdx = startIndex
         while currentIdx != endIndex {
-            let randomIdx = randomIndex()
+            let randomIdx = randomIndex
             guard currentIdx != randomIdx else { continue }
             swap(&self[currentIdx], &self[randomIdx])
-            
-            currentIdx = index(after: currentIdx)
+            formIndex(after: &currentIdx)
         }
-    }
-    
-    //TODO: Consider moving this to a more generic location
-    private func randomIndex() -> Index {
-        let randomDistance = IndexDistance.random(max:count)
-        return index(startIndex, offsetBy: randomDistance)
     }
 }

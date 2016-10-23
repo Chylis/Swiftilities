@@ -10,8 +10,10 @@ import Foundation
 
 public extension String {
     
-    ///Length of the string
-    var length: Int { return characters.count }
+    ///The "logical" length of the string (i.e. the count of the composed code points)
+    func length() -> Int {
+        return characters.count
+    }
      
     func toArray() -> [String] {
         return characters.map { String($0) }

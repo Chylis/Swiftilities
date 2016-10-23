@@ -32,6 +32,8 @@
 		5F3B33B41D8BF1A7004BC1F5 /* BoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B33B31D8BF1A7004BC1F5 /* BoolTests.swift */; };
 		5F52C0BB1D53967200E7BD36 /* SignedIntegerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BA1D53967200E7BD36 /* SignedIntegerTests.swift */; };
 		5F52C0BD1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */; };
+		5F5BBB471DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */; };
+		5F5BBB491DBCABAA009C18C6 /* RandomAccessCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BBB481DBCABAA009C18C6 /* RandomAccessCollectionTests.swift */; };
 		5F7E35A91CDDD803002FF0EB /* Swiftilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7E35A81CDDD803002FF0EB /* Swiftilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F7E35B01CDDD803002FF0EB /* Swiftilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */; };
 		5F81CDFA1CE64549001C43DE /* Collection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDF91CE64549001C43DE /* Collection+Swiftilities.swift */; };
@@ -44,7 +46,6 @@
 		5FBF15631CEAFDE200EA458F /* CollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15621CEAFDE100EA458F /* CollectionTests.swift */; };
 		5FBF15651CEB06DA00EA458F /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15641CEB06DA00EA458F /* SequenceTests.swift */; };
 		5FBF15671CEB0D4C00EA458F /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */; };
-		5FDF06F11CEF0FF9006E3DBC /* Range+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */; };
 		5FDF06F31CEF1140006E3DBC /* MutableCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */; };
 		5FF55E281CE5C8F000387D0A /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,8 @@
 		5F3B33B31D8BF1A7004BC1F5 /* BoolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolTests.swift; sourceTree = "<group>"; };
 		5F52C0BA1D53967200E7BD36 /* SignedIntegerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedIntegerTests.swift; sourceTree = "<group>"; };
 		5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Swiftilities.swift"; sourceTree = "<group>"; };
+		5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+Swiftilities.swift"; sourceTree = "<group>"; };
+		5F5BBB481DBCABAA009C18C6 /* RandomAccessCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAccessCollectionTests.swift; sourceTree = "<group>"; };
 		5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7E35A81CDDD803002FF0EB /* Swiftilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftilities.h; sourceTree = "<group>"; };
 		5F7E35AA1CDDD803002FF0EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +95,6 @@
 		5FBF15621CEAFDE100EA458F /* CollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTests.swift; sourceTree = "<group>"; };
 		5FBF15641CEB06DA00EA458F /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
 		5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
-		5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FF55E271CE5C8F000387D0A /* NibContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +154,7 @@
 				5FBF15621CEAFDE100EA458F /* CollectionTests.swift */,
 				5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */,
 				5F7E35B61CDDD803002FF0EB /* Info.plist */,
+				5F5BBB481DBCABAA009C18C6 /* RandomAccessCollectionTests.swift */,
 				5FBF15641CEB06DA00EA458F /* SequenceTests.swift */,
 				5F52C0BA1D53967200E7BD36 /* SignedIntegerTests.swift */,
 			);
@@ -170,7 +173,7 @@
 				5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */,
 				5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */,
 				5FF55E271CE5C8F000387D0A /* NibContainerView.swift */,
-				5FDF06F01CEF0FF9006E3DBC /* Range+Swiftilities.swift */,
+				5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */,
 				5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */,
 				5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */,
 				5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */,
@@ -320,8 +323,8 @@
 				5F378A831CDF5CF400BD9557 /* UIColor+Swiftilities.swift in Sources */,
 				5F378A851CDF5D9F00BD9557 /* UIImage+Swiftilities.swift in Sources */,
 				5F378A891CDF5E4900BD9557 /* Data+Swiftilities.swift in Sources */,
+				5F5BBB471DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift in Sources */,
 				5F81CDFA1CE64549001C43DE /* Collection+Swiftilities.swift in Sources */,
-				5FDF06F11CEF0FF9006E3DBC /* Range+Swiftilities.swift in Sources */,
 				5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */,
 				5FDF06F31CEF1140006E3DBC /* MutableCollection+Swiftilities.swift in Sources */,
 				5F3B33B21D8BF15D004BC1F5 /* Bool+Swiftilities.swift in Sources */,
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FBF15671CEB0D4C00EA458F /* DictionaryTests.swift in Sources */,
+				5F5BBB491DBCABAA009C18C6 /* RandomAccessCollectionTests.swift in Sources */,
 				5FBF15651CEB06DA00EA458F /* SequenceTests.swift in Sources */,
 				5F52C0BB1D53967200E7BD36 /* SignedIntegerTests.swift in Sources */,
 				5FBF15631CEAFDE200EA458F /* CollectionTests.swift in Sources */,
