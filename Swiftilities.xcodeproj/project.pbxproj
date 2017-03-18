@@ -7,21 +7,51 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		5F42572F1CE089A000D53A60 /* FatFramework */ = {
+		5F226DB11E7DD0330038120D /* FatFramework_tvOS */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework" */;
+			buildConfigurationList = 5F226DB51E7DD0330038120D /* Build configuration list for PBXAggregateTarget "FatFramework_tvOS" */;
+			buildPhases = (
+				5F226DB41E7DD0330038120D /* ShellScript */,
+			);
+			dependencies = (
+				5F226DB21E7DD0330038120D /* PBXTargetDependency */,
+			);
+			name = FatFramework_tvOS;
+			productName = FatFramework;
+		};
+		5F42572F1CE089A000D53A60 /* FatFramework_iOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework_iOS" */;
 			buildPhases = (
 				5F4257331CE089B100D53A60 /* ShellScript */,
 			);
 			dependencies = (
 				5FBF15691CEB0F3B00EA458F /* PBXTargetDependency */,
 			);
-			name = FatFramework;
+			name = FatFramework_iOS;
 			productName = FatFramework;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5F226DA01E7DCD350038120D /* Array+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7C1CDF588D00BD9557 /* Array+Swiftilities.swift */; };
+		5F226DA11E7DCD350038120D /* Bool+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B33B11D8BF15C004BC1F5 /* Bool+Swiftilities.swift */; };
+		5F226DA21E7DCD350038120D /* Collection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDF91CE64549001C43DE /* Collection+Swiftilities.swift */; };
+		5F226DA31E7DCD350038120D /* Data+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A881CDF5E4900BD9557 /* Data+Swiftilities.swift */; };
+		5F226DA41E7DCD350038120D /* Dictionary+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */; };
+		5F226DA51E7DCD350038120D /* Double+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */; };
+		5F226DA61E7DCD350038120D /* Float+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */; };
+		5F226DA71E7DCD350038120D /* MutableCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */; };
+		5F226DA81E7DCD350038120D /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
+		5F226DA91E7DCD350038120D /* RandomAccessCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */; };
+		5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */; };
+		5F226DAB1E7DCD350038120D /* SignedInteger+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */; };
+		5F226DAC1E7DCD350038120D /* String+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */; };
+		5F226DAD1E7DCD350038120D /* UIColor+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A821CDF5CF400BD9557 /* UIColor+Swiftilities.swift */; };
+		5F226DAE1E7DCD350038120D /* UIImage+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */; };
+		5F226DAF1E7DCD350038120D /* UIView+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */; };
+		5F226DB01E7DCD350038120D /* UIViewController+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A861CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift */; };
+		5F226DB81E7DD0FA0038120D /* Swiftilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7E35A81CDDD803002FF0EB /* Swiftilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F378A7E1CDF588D00BD9557 /* Array+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7C1CDF588D00BD9557 /* Array+Swiftilities.swift */; };
 		5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */; };
 		5F378A831CDF5CF400BD9557 /* UIColor+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A821CDF5CF400BD9557 /* UIColor+Swiftilities.swift */; };
@@ -51,6 +81,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5F226DB31E7DD0330038120D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7E359C1CDDD802002FF0EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F7E35AE1CDDD803002FF0EB;
+			remoteInfo = SwiftilitiesTests;
+		};
 		5F7E35B11CDDD803002FF0EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F7E359C1CDDD802002FF0EB /* Project object */;
@@ -68,6 +105,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F226D981E7DCD270038120D /* Swiftilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F378A7C1CDF588D00BD9557 /* Array+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F378A821CDF5CF400BD9557 /* UIColor+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Swiftilities.swift"; sourceTree = "<group>"; };
@@ -100,6 +138,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F226D941E7DCD270038120D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7E35A11CDDD803002FF0EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +177,7 @@
 			children = (
 				5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */,
 				5F7E35AF1CDDD803002FF0EB /* SwiftilitiesTests.xctest */,
+				5F226D981E7DCD270038120D /* Swiftilities.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +234,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		5F226D951E7DCD270038120D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F226DB81E7DD0FA0038120D /* Swiftilities.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7E35A21CDDD803002FF0EB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -199,9 +253,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5F7E35A41CDDD803002FF0EB /* Swiftilities */ = {
+		5F226D971E7DCD270038120D /* Swiftilities_tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F7E35B91CDDD803002FF0EB /* Build configuration list for PBXNativeTarget "Swiftilities" */;
+			buildConfigurationList = 5F226D9F1E7DCD270038120D /* Build configuration list for PBXNativeTarget "Swiftilities_tvOS" */;
+			buildPhases = (
+				5F226D931E7DCD270038120D /* Sources */,
+				5F226D941E7DCD270038120D /* Frameworks */,
+				5F226D951E7DCD270038120D /* Headers */,
+				5F226D961E7DCD270038120D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swiftilities_tvOS;
+			productName = Swiftilities_tvOS;
+			productReference = 5F226D981E7DCD270038120D /* Swiftilities.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F7E35A41CDDD803002FF0EB /* Swiftilities_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F7E35B91CDDD803002FF0EB /* Build configuration list for PBXNativeTarget "Swiftilities_iOS" */;
 			buildPhases = (
 				5F7E35A01CDDD803002FF0EB /* Sources */,
 				5F7E35A11CDDD803002FF0EB /* Frameworks */,
@@ -212,7 +284,7 @@
 			);
 			dependencies = (
 			);
-			name = Swiftilities;
+			name = Swiftilities_iOS;
 			productName = Swiftilities;
 			productReference = 5F7E35A51CDDD803002FF0EB /* Swiftilities.framework */;
 			productType = "com.apple.product-type.framework";
@@ -242,9 +314,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Magnus Eriksson";
 				TargetAttributes = {
+					5F226D971E7DCD270038120D = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 49LF42S652;
+						ProvisioningStyle = Automatic;
+					};
 					5F42572F1CE089A000D53A60 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -255,6 +332,7 @@
 					};
 					5F7E35AE1CDDD803002FF0EB = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 49LF42S652;
 					};
 				};
 			};
@@ -270,14 +348,23 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5F7E35A41CDDD803002FF0EB /* Swiftilities */,
+				5F7E35A41CDDD803002FF0EB /* Swiftilities_iOS */,
+				5F42572F1CE089A000D53A60 /* FatFramework_iOS */,
+				5F226D971E7DCD270038120D /* Swiftilities_tvOS */,
+				5F226DB11E7DD0330038120D /* FatFramework_tvOS */,
 				5F7E35AE1CDDD803002FF0EB /* SwiftilitiesTests */,
-				5F42572F1CE089A000D53A60 /* FatFramework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F226D961E7DCD270038120D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7E35A31CDDD803002FF0EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +382,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5F226DB41E7DD0330038120D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}_tvOS-universal\n\n# clean and create the output directory\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\" && mkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"Swiftilities_tvOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk appletvos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"Swiftilities_tvOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk appletvsimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from appletvos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-appletvos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from appletvsimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-appletvos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/${PROJECT_NAME}_tvOS.framework\"";
+		};
 		5F4257331CE089B100D53A60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,11 +406,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build \\\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"Swiftilities_iOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"Swiftilities_iOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/${PROJECT_NAME}_iOS.framework\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F226D931E7DCD270038120D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F226DA71E7DCD350038120D /* MutableCollection+Swiftilities.swift in Sources */,
+				5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */,
+				5F226DA01E7DCD350038120D /* Array+Swiftilities.swift in Sources */,
+				5F226DAD1E7DCD350038120D /* UIColor+Swiftilities.swift in Sources */,
+				5F226DAC1E7DCD350038120D /* String+Swiftilities.swift in Sources */,
+				5F226DA11E7DCD350038120D /* Bool+Swiftilities.swift in Sources */,
+				5F226DA21E7DCD350038120D /* Collection+Swiftilities.swift in Sources */,
+				5F226DA91E7DCD350038120D /* RandomAccessCollection+Swiftilities.swift in Sources */,
+				5F226DAF1E7DCD350038120D /* UIView+Swiftilities.swift in Sources */,
+				5F226DA41E7DCD350038120D /* Dictionary+Swiftilities.swift in Sources */,
+				5F226DA81E7DCD350038120D /* NibContainerView.swift in Sources */,
+				5F226DAB1E7DCD350038120D /* SignedInteger+Swiftilities.swift in Sources */,
+				5F226DA51E7DCD350038120D /* Double+Swiftilities.swift in Sources */,
+				5F226DAE1E7DCD350038120D /* UIImage+Swiftilities.swift in Sources */,
+				5F226DA31E7DCD350038120D /* Data+Swiftilities.swift in Sources */,
+				5F226DB01E7DCD350038120D /* UIViewController+Swiftilities.swift in Sources */,
+				5F226DA61E7DCD350038120D /* Float+Swiftilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F7E35A01CDDD803002FF0EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,9 +476,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5F226DB21E7DD0330038120D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F7E35AE1CDDD803002FF0EB /* SwiftilitiesTests */;
+			targetProxy = 5F226DB31E7DD0330038120D /* PBXContainerItemProxy */;
+		};
 		5F7E35B21CDDD803002FF0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5F7E35A41CDDD803002FF0EB /* Swiftilities */;
+			target = 5F7E35A41CDDD803002FF0EB /* Swiftilities_iOS */;
 			targetProxy = 5F7E35B11CDDD803002FF0EB /* PBXContainerItemProxy */;
 		};
 		5FBF15691CEB0F3B00EA458F /* PBXTargetDependency */ = {
@@ -365,6 +494,79 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5F226D9D1E7DCD270038120D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 49LF42S652;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Swiftilities/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.mag.Swiftilities-tvOS";
+				PRODUCT_NAME = Swiftilities;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		5F226D9E1E7DCD270038120D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 49LF42S652;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Swiftilities/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.mag.Swiftilities-tvOS";
+				PRODUCT_NAME = Swiftilities;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		5F226DB61E7DD0330038120D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+			};
+			name = Debug;
+		};
+		5F226DB71E7DD0330038120D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+			};
+			name = Release;
+		};
 		5F4257301CE089A000D53A60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -393,8 +595,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -442,8 +646,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -463,6 +669,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -474,6 +681,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -483,7 +691,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.magmag.Swiftilities;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Swiftilities;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -495,6 +703,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -504,7 +713,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.magmag.Swiftilities;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Swiftilities;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -515,6 +724,7 @@
 		5F7E35BD1CDDD803002FF0EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 49LF42S652;
 				INFOPLIST_FILE = SwiftilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.magmag.SwiftilitiesTests;
@@ -526,6 +736,7 @@
 		5F7E35BE1CDDD803002FF0EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 49LF42S652;
 				INFOPLIST_FILE = SwiftilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.magmag.SwiftilitiesTests;
@@ -538,7 +749,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework" */ = {
+		5F226D9F1E7DCD270038120D /* Build configuration list for PBXNativeTarget "Swiftilities_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F226D9D1E7DCD270038120D /* Debug */,
+				5F226D9E1E7DCD270038120D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5F226DB51E7DD0330038120D /* Build configuration list for PBXAggregateTarget "FatFramework_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F226DB61E7DD0330038120D /* Debug */,
+				5F226DB71E7DD0330038120D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F4257321CE089A000D53A60 /* Build configuration list for PBXAggregateTarget "FatFramework_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F4257301CE089A000D53A60 /* Debug */,
@@ -556,7 +784,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F7E35B91CDDD803002FF0EB /* Build configuration list for PBXNativeTarget "Swiftilities" */ = {
+		5F7E35B91CDDD803002FF0EB /* Build configuration list for PBXNativeTarget "Swiftilities_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F7E35BA1CDDD803002FF0EB /* Debug */,
