@@ -19,6 +19,16 @@ class ArrayTests: XCTestCase {
         XCTAssertNil(array[safe: 66], "")
     }
     
+    func testIndicesSubscript() {
+        let array = [9,8,7,6,5,4,3,2,1,0]
+        XCTAssertEqual([0,2,4,6,8], array[[9,7,5,3,1]])
+    }
+    
+    func testSafeIndicesSubscript() {
+        let array = [9,8,7,6,5,4,3,2,1,0]
+        XCTAssertEqual([4,6,8], array[safeIndices: [90,71,5,3,1,-1]])
+    }
+    
     func testShuffleInPlace() {
         let array = [0,1,2,3,4,5,6,7,8,9,10]
         var shuffled = array

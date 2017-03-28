@@ -15,6 +15,16 @@ public extension Array {
         return indices ~= index ? self[index] : nil
     }
     
+    ///Returns an array containing the elements at the received indicies. Make sure that the indices are not out of bounds.
+    subscript(indices: [Int]) -> [Element] {
+        return indices.map { self[$0] }
+    }
+    
+    ///Returns an array containing the elements at the received indicies.
+    subscript(safeIndices indices: [Int]) -> [Element] {
+        return indices.flatMap { self[safe: $0]}
+    }
+    
     ///Removes the elements and the received indices
     mutating func remove(at indices:[Int]) {
         for i in indices.sorted(by: >) {
