@@ -14,7 +14,8 @@ public extension Data {
     
     ///Returns a formatted device token string
     func formattedDeviceToken() -> String {
-        return description
+        return NSData(data: self)
+            .description
             .trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
             .replacingOccurrences(of: " ", with: "")
     }
