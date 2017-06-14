@@ -10,31 +10,6 @@ import Foundation
 
 public extension Dictionary {
     
-    /**
-     
-     Get: Returns value for key if key is present, else returns default value
-     ````
-     //Returns value for key "age" or 0 if key "age" is not present
-     dict["age", default: 0]
-     ````
-     
-     Set: Sets the received value for the key.
-     ````
-     //Sets value for key "age" to "existing value + 1" or if key "age" is not present: "default value + 1 (i.e. 0 + 1)"
-     dict["age", default: 0] += 1
-     ````
-     */
-    subscript(key: Key, default value: Value) -> Value {
-        get {
-            return self[key] ?? value
-        }
-        
-        set(newValue) {
-            self[key] = newValue
-        }
-    }
-    
-    
     //NOTE: There exists a Swift-Evolution proposal to add a similar initialiser
     ///Creates a new dictionary from a sequence of key-value pairs
     init<S: Sequence>(sequence: S) where S.Iterator.Element == (key: Key, value: Value) {
@@ -59,9 +34,10 @@ public extension Dictionary {
     ///Returns a new dictionary, keeping the same keys but transforming the values
     func mappingValues<NewValue>(transform: (Value) throws -> NewValue)
         rethrows -> [Key:NewValue] {
-            return try Dictionary<Key, NewValue>(sequence: map { (key, value) -> (Key, NewValue) in
+            return try Dictionary<Key, NewValue>(sequence: map { (entry: (Key, Value)) -> (Key, NewValue) in
+                let (key,value) = entry;
                 return (key, try transform(value))
-                })
+            })
     }
 }
 

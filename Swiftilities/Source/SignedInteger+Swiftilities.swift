@@ -32,15 +32,16 @@ public extension SignedInteger {
             return min
         }
 
-        //In the case where 'min' is negative we need to make sure that the 'upperBound' 
+        let (upperBound, didOverflow) = (numericCast(max) as Int).subtractingReportingOverflow(numericCast(min))
+        
+        //In the case where 'min' is negative we need to make sure that the 'upperBound'
         //variable below won't contain a value larger than a SignedInteger can hold
-        guard (max.toIntMax() - min.toIntMax()) <= Int.max.toIntMax() else {
+        guard !didOverflow else {
             return min
         }
         
-        let upperBound = (max - min)
+        //ar4random_uniform is only callable with UInt and only up to UInt32.max
         guard upperBound > 0 else {
-            //ar4random_uniform is only callable with UInt and only up to UInt32.max
             return min
         }
         
@@ -59,8 +60,15 @@ public extension SignedInteger {
         - 'min' if Self is smaller than 'min'
         - Self if Self is between 'min' and 'max'
         - 'max' if Self is larger than 'max'
+     
      */
-    func clamp(min minValue: Self, max maxValue: Self) -> Self {
-        return max(minValue, min(maxValue, self))
+    func clamp(between minValue: Self, and maxValue: Self) -> Self {
+        if self < minValue {
+            return minValue
+        }
+        if self > maxValue {
+            return maxValue
+        }
+        return self
     }
 }

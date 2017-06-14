@@ -15,7 +15,7 @@ public extension MutableCollection where Self: RandomAccessCollection {
         while currentIdx != endIndex {
             let randomIdx = randomIndex
             guard currentIdx != randomIdx else { continue }
-            swap(&self[currentIdx], &self[randomIdx])
+            swapAt(currentIdx, randomIdx)
             formIndex(after: &currentIdx)
         }
     }

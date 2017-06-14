@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension RandomAccessCollection where Iterator.Element: Comparable, Indices.Iterator.Element == Index {
+public extension RandomAccessCollection where Iterator.Element: Comparable {
     
     /**
      The index of the minimum element. The '>' operator is used to compare elements.
