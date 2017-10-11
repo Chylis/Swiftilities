@@ -14,7 +14,7 @@
 				5F226DB41E7DD0330038120D /* ShellScript */,
 			);
 			dependencies = (
-				5F226DB21E7DD0330038120D /* PBXTargetDependency */,
+				5F06EA651F8E95DD00D5DCE2 /* PBXTargetDependency */,
 			);
 			name = FatFramework_tvOS;
 			productName = FatFramework;
@@ -26,7 +26,7 @@
 				5F4257331CE089B100D53A60 /* ShellScript */,
 			);
 			dependencies = (
-				5FBF15691CEB0F3B00EA458F /* PBXTargetDependency */,
+				5F06EA631F8E95D600D5DCE2 /* PBXTargetDependency */,
 			);
 			name = FatFramework_iOS;
 			productName = FatFramework;
@@ -81,12 +81,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5F226DB31E7DD0330038120D /* PBXContainerItemProxy */ = {
+		5F06EA621F8E95D600D5DCE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F7E359C1CDDD802002FF0EB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5F7E35AE1CDDD803002FF0EB;
-			remoteInfo = SwiftilitiesTests;
+			remoteGlobalIDString = 5F7E35A41CDDD803002FF0EB;
+			remoteInfo = Swiftilities_iOS;
+		};
+		5F06EA641F8E95DD00D5DCE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F7E359C1CDDD802002FF0EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F226D971E7DCD270038120D;
+			remoteInfo = Swiftilities_tvOS;
 		};
 		5F7E35B11CDDD803002FF0EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -94,13 +101,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5F7E35A41CDDD803002FF0EB;
 			remoteInfo = Swiftilities;
-		};
-		5FBF15681CEB0F3B00EA458F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F7E359C1CDDD802002FF0EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5F7E35AE1CDDD803002FF0EB;
-			remoteInfo = SwiftilitiesTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -395,7 +395,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}_tvOS-universal\n\n# clean and create the output directory\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\" && mkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"Swiftilities_tvOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk appletvos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"Swiftilities_tvOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk appletvsimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from appletvos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-appletvos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from appletvsimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-appletvos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/${PROJECT_NAME}_tvOS.framework\"";
+			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
 		};
 		5F4257331CE089B100D53A60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -408,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"Swiftilities_iOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"Swiftilities_iOS\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/${PROJECT_NAME}_iOS.framework\"";
+			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -478,20 +478,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5F226DB21E7DD0330038120D /* PBXTargetDependency */ = {
+		5F06EA631F8E95D600D5DCE2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5F7E35AE1CDDD803002FF0EB /* SwiftilitiesTests */;
-			targetProxy = 5F226DB31E7DD0330038120D /* PBXContainerItemProxy */;
+			target = 5F7E35A41CDDD803002FF0EB /* Swiftilities_iOS */;
+			targetProxy = 5F06EA621F8E95D600D5DCE2 /* PBXContainerItemProxy */;
+		};
+		5F06EA651F8E95DD00D5DCE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F226D971E7DCD270038120D /* Swiftilities_tvOS */;
+			targetProxy = 5F06EA641F8E95DD00D5DCE2 /* PBXContainerItemProxy */;
 		};
 		5F7E35B21CDDD803002FF0EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F7E35A41CDDD803002FF0EB /* Swiftilities_iOS */;
 			targetProxy = 5F7E35B11CDDD803002FF0EB /* PBXContainerItemProxy */;
-		};
-		5FBF15691CEB0F3B00EA458F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5F7E35AE1CDDD803002FF0EB /* SwiftilitiesTests */;
-			targetProxy = 5FBF15681CEB0F3B00EA458F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
