@@ -46,7 +46,6 @@
 		5F226DA91E7DCD350038120D /* RandomAccessCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */; };
 		5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */; };
 		5F226DAB1E7DCD350038120D /* SignedInteger+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */; };
-		5F226DAC1E7DCD350038120D /* String+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */; };
 		5F226DAD1E7DCD350038120D /* UIColor+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A821CDF5CF400BD9557 /* UIColor+Swiftilities.swift */; };
 		5F226DAE1E7DCD350038120D /* UIImage+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */; };
 		5F226DAF1E7DCD350038120D /* UIView+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */; };
@@ -69,7 +68,6 @@
 		5F81CDFA1CE64549001C43DE /* Collection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDF91CE64549001C43DE /* Collection+Swiftilities.swift */; };
 		5F81CDFE1CE64A2E001C43DE /* Float+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */; };
 		5F81CE001CE64AD5001C43DE /* Double+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */; };
-		5F81CE021CE64C97001C43DE /* String+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */; };
 		5FBF155C1CE9CA1100EA458F /* Sequence+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */; };
 		5FBF155F1CE9EF9800EA458F /* Dictionary+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */; };
 		5FBF15611CEAFB4C00EA458F /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15601CEAFB4C00EA458F /* ArrayTests.swift */; };
@@ -126,7 +124,6 @@
 		5F81CDF91CE64549001C43DE /* Collection+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Swiftilities.swift"; sourceTree = "<group>"; };
 		5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Swiftilities.swift"; sourceTree = "<group>"; };
-		5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FBF15601CEAFB4C00EA458F /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
@@ -222,7 +219,6 @@
 				5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */,
 				5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */,
 				5F52C0BC1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift */,
-				5F81CE011CE64C97001C43DE /* String+Swiftilities.swift */,
 				5F378A821CDF5CF400BD9557 /* UIColor+Swiftilities.swift */,
 				5F378A841CDF5D9F00BD9557 /* UIImage+Swiftilities.swift */,
 				5F378A7D1CDF588D00BD9557 /* UIView+Swiftilities.swift */,
@@ -421,7 +417,6 @@
 				5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */,
 				5F226DA01E7DCD350038120D /* Array+Swiftilities.swift in Sources */,
 				5F226DAD1E7DCD350038120D /* UIColor+Swiftilities.swift in Sources */,
-				5F226DAC1E7DCD350038120D /* String+Swiftilities.swift in Sources */,
 				5F226DA11E7DCD350038120D /* Bool+Swiftilities.swift in Sources */,
 				5F226DA21E7DCD350038120D /* Collection+Swiftilities.swift in Sources */,
 				5F226DA91E7DCD350038120D /* RandomAccessCollection+Swiftilities.swift in Sources */,
@@ -445,7 +440,6 @@
 				5F378A871CDF5DEC00BD9557 /* UIViewController+Swiftilities.swift in Sources */,
 				5FBF155C1CE9CA1100EA458F /* Sequence+Swiftilities.swift in Sources */,
 				5FBF155F1CE9EF9800EA458F /* Dictionary+Swiftilities.swift in Sources */,
-				5F81CE021CE64C97001C43DE /* String+Swiftilities.swift in Sources */,
 				5F378A831CDF5CF400BD9557 /* UIColor+Swiftilities.swift in Sources */,
 				5F378A851CDF5D9F00BD9557 /* UIImage+Swiftilities.swift in Sources */,
 				5F378A891CDF5E4900BD9557 /* Data+Swiftilities.swift in Sources */,
