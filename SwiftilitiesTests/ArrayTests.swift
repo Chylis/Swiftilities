@@ -176,7 +176,7 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual([1,2,3,4] - [], [1,2,3,4])
         let empty: [Int] = []
         XCTAssertEqual(empty - [], [])
-        XCTAssertEqual([] - [1,2,3], [])
+        XCTAssertEqual(empty - [1,2,3], [])
         
         //Test removing single element in array
         XCTAssertEqual([3,1,2,3,4] - [3,6], [3,1,2,4])

@@ -16,7 +16,7 @@ public extension Collection {
      Complexity: O(1) if the collection conforms to RandomAccessCollection; otherwise, O(n), where n is the length of the collection.
      */
     var randomIndex: Index {
-        let randomDistance = IndexDistance.random(max:count)
+        let randomDistance = Int.random(max:count)
         return index(startIndex, offsetBy: randomDistance)
     }
     

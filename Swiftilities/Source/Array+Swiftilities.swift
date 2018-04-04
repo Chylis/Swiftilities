@@ -22,7 +22,7 @@ public extension Array {
     
     ///Returns an array containing the elements at the received indicies.
     subscript(safeIndices indices: [Int]) -> [Element] {
-        return indices.flatMap { self[safe: $0]}
+        return indices.compactMap { self[safe: $0]}
     }
     
     ///Removes the elements and the received indices
@@ -50,7 +50,7 @@ public extension Array where Element: Equatable {
      - Note: Complexity is O(N^2)
      */
     mutating func remove(_ elements: [Element]) -> [Element] {
-        return elements.flatMap { remove($0) }
+        return elements.compactMap { remove($0) }
     }
     
     
@@ -67,7 +67,7 @@ public extension Array where Element: Equatable {
      */
     mutating func removeFromEnd(_ elements: [Element]) -> [Element] {
         var result: [Element] = reversed()
-        let removed = elements.flatMap { result.remove($0) }
+        let removed = elements.compactMap { result.remove($0) }
         self = result.reversed()
         return removed
     }
