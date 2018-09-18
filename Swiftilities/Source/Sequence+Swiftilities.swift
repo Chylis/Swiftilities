@@ -146,13 +146,6 @@ public extension Sequence {
             }
     }
     
-    ///Returns a new array containing of the elements in self in a random order
-    func shuffled() -> [Iterator.Element] {
-        var clone = Array(self)
-        clone.shuffle()
-        return clone
-    }
-    
     ///Returns the last element that matches the received predicate
     func last(where predicate: (Iterator.Element) throws -> Bool) rethrows -> Iterator.Element? {
         for element in reversed() where try predicate(element) {

@@ -38,7 +38,7 @@ public extension UIViewController {
              in parentView: UIView? = nil,
              withConstraints constraints: [NSLayoutConstraint]? = nil) {
         
-        addChildViewController(childViewController)
+        addChild(childViewController)
         
         let containerView: UIView = parentView ?? self.view
         
@@ -50,13 +50,13 @@ public extension UIViewController {
             containerView.centerSubview(childViewController.view)
         }
         
-        childViewController.didMove(toParentViewController: self)
+        childViewController.didMove(toParent: self)
     }
     
     ///Removes self from the parent view controller by performing all steps required in the 'remove child view controller' process
-    func removeFromParent() {
-        willMove(toParentViewController: nil)
+    func removeFromParentViewController() {
+        willMove(toParent: nil)
         view.removeFromSuperview()
-        removeFromParentViewController()
+        removeFromParent()
     }
 }

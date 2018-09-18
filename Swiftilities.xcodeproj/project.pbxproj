@@ -41,7 +41,6 @@
 		5F226DA41E7DCD350038120D /* Dictionary+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */; };
 		5F226DA51E7DCD350038120D /* Double+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */; };
 		5F226DA61E7DCD350038120D /* Float+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */; };
-		5F226DA71E7DCD350038120D /* MutableCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */; };
 		5F226DA81E7DCD350038120D /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
 		5F226DA91E7DCD350038120D /* RandomAccessCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */; };
 		5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */; };
@@ -74,7 +73,6 @@
 		5FBF15631CEAFDE200EA458F /* CollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15621CEAFDE100EA458F /* CollectionTests.swift */; };
 		5FBF15651CEB06DA00EA458F /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15641CEB06DA00EA458F /* SequenceTests.swift */; };
 		5FBF15671CEB0D4C00EA458F /* DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */; };
-		5FDF06F31CEF1140006E3DBC /* MutableCollection+Swiftilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */; };
 		5FF55E281CE5C8F000387D0A /* NibContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF55E271CE5C8F000387D0A /* NibContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -130,7 +128,6 @@
 		5FBF15621CEAFDE100EA458F /* CollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTests.swift; sourceTree = "<group>"; };
 		5FBF15641CEB06DA00EA458F /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
 		5FBF15661CEB0D4C00EA458F /* DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTests.swift; sourceTree = "<group>"; };
-		5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Swiftilities.swift"; sourceTree = "<group>"; };
 		5FF55E271CE5C8F000387D0A /* NibContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,7 +211,6 @@
 				5FBF155E1CE9EF9800EA458F /* Dictionary+Swiftilities.swift */,
 				5F81CDFF1CE64AD5001C43DE /* Double+Swiftilities.swift */,
 				5F81CDFD1CE64A2E001C43DE /* Float+Swiftilities.swift */,
-				5FDF06F21CEF1140006E3DBC /* MutableCollection+Swiftilities.swift */,
 				5FF55E271CE5C8F000387D0A /* NibContainerView.swift */,
 				5F5BBB461DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift */,
 				5FBF155B1CE9CA1100EA458F /* Sequence+Swiftilities.swift */,
@@ -316,6 +312,7 @@
 					5F226D971E7DCD270038120D = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 49LF42S652;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					5F42572F1CE089A000D53A60 = {
@@ -391,7 +388,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
+			shellScript = "OBJROOT=\"${OBJROOT}/DependentBuilds\"\n${PROJECT_DIR}/build-fat-framework.sh\n";
 		};
 		5F4257331CE089B100D53A60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -404,7 +401,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/build-fat-framework.sh";
+			shellScript = "OBJROOT=\"${OBJROOT}/DependentBuilds\"\n${PROJECT_DIR}/build-fat-framework.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -413,7 +410,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F226DA71E7DCD350038120D /* MutableCollection+Swiftilities.swift in Sources */,
 				5F226DAA1E7DCD350038120D /* Sequence+Swiftilities.swift in Sources */,
 				5F226DA01E7DCD350038120D /* Array+Swiftilities.swift in Sources */,
 				5F226DAD1E7DCD350038120D /* UIColor+Swiftilities.swift in Sources */,
@@ -446,7 +442,6 @@
 				5F5BBB471DBCAB72009C18C6 /* RandomAccessCollection+Swiftilities.swift in Sources */,
 				5F81CDFA1CE64549001C43DE /* Collection+Swiftilities.swift in Sources */,
 				5F378A7F1CDF588D00BD9557 /* UIView+Swiftilities.swift in Sources */,
-				5FDF06F31CEF1140006E3DBC /* MutableCollection+Swiftilities.swift in Sources */,
 				5F3B33B21D8BF15D004BC1F5 /* Bool+Swiftilities.swift in Sources */,
 				5F52C0BD1D53967A00E7BD36 /* SignedInteger+Swiftilities.swift in Sources */,
 				5F81CDFE1CE64A2E001C43DE /* Float+Swiftilities.swift in Sources */,
@@ -493,7 +488,6 @@
 		5F226D9D1E7DCD270038120D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -512,7 +506,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
@@ -521,7 +514,6 @@
 		5F226D9E1E7DCD270038120D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -539,7 +531,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
@@ -582,6 +573,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -630,6 +622,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -641,6 +634,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -682,6 +676,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -707,7 +702,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = full;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -730,7 +724,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = full;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

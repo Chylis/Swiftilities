@@ -94,7 +94,7 @@ public extension UIView {
         
         let transition = CATransition()
         transition.duration = duration
-        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         layer.add(transition, forKey: nil)
         CATransaction.commit()
     }
@@ -123,7 +123,7 @@ public extension UIView {
     class func animate(repetitions:Int,
                        duration: TimeInterval,
                        after: TimeInterval,
-                       options: UIViewAnimationOptions,
+                       options: UIView.AnimationOptions,
                        animations: @escaping (() -> ()),
                        completion: ((Bool) -> ())? = nil) {
         

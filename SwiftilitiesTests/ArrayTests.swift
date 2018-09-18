@@ -29,26 +29,6 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual([4,6,8], array[safeIndices: [90,71,5,3,1,-1]])
     }
     
-    func testShuffleInPlace() {
-        let array = [0,1,2,3,4,5,6,7,8,9,10]
-        var shuffled = array
-        shuffled.shuffle()
-        
-        XCTAssertNotEqual(array, shuffled)
-        for elem in array {
-            XCTAssertTrue(shuffled.contains(elem))
-        }
-    }
-    
-    func testShuffled() {
-        let array = [0,1,2,3,4,5,6,7,8,9,10]
-        let shuffled = array.shuffled()
-        XCTAssertNotEqual(array, shuffled)
-        for elem in array {
-            XCTAssertTrue(shuffled.contains(elem))
-        }
-    }
-    
     func testMultipleRemoval() {
         var array = [0,1,2,3,4,5,6,7,8,9,10]
         array.remove(at: [0,2,4,6,8,10])

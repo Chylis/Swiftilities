@@ -13,26 +13,6 @@ import XCTest
 
 class BoolTests: XCTestCase {
     
-    func testToggle() {
-        var t = true
-        XCTAssertTrue(t)
-        
-        t.toggle()
-        XCTAssertFalse(t)
-        
-        t.toggle()
-        XCTAssertTrue(t)
-        
-        var f = false
-        XCTAssertFalse(f)
-        
-        f.toggle()
-        XCTAssertTrue(f)
-        
-        f.toggle()
-        XCTAssertFalse(f)
-    }
-    
     func testToggled() {
         let t = true
         XCTAssertEqual(t, true)
