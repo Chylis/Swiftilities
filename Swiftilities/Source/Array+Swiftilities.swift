@@ -37,7 +37,7 @@ public extension Array where Element: Equatable {
     
     ///Removes and returns the first occurrence of element, or nil if no element was removed
     mutating func remove(_ element: Element) -> Element? {
-        guard let idx = index(of: element) else {
+        guard let idx = firstIndex(of: element) else {
             return nil
         }
         return remove(at: idx)
