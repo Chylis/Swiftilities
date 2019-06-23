@@ -6,6 +6,8 @@
 //  Copyright © 2016 Magnus Eriksson. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public enum NibContainerViewError: Error {
@@ -83,3 +85,5 @@ public final class NibContainerView: UIView {
         return view
     }
 }
+
+#endif

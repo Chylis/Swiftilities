@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SignedIntegerTests: XCTestCase {
+final class SignedIntegerTests: XCTestCase {
     
     func testRandomIsWithinMinAndMax() {
         let min = 11

@@ -9,6 +9,6 @@
 import XCTest
 @testable import Swiftilities
 
-class CollectionTests: XCTestCase {
+final class CollectionTests: XCTestCase {
 
 }

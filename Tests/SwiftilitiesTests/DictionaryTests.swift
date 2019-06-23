@@ -9,7 +9,7 @@
 import XCTest
 @testable import Swiftilities
 
-class DictionaryTests: XCTestCase {
+final class DictionaryTests: XCTestCase {
     
     func testDefaultToSubscript() {
         var dict = [0:0,1:1,2:2,3:3]

@@ -9,7 +9,7 @@
 import XCTest
 @testable import Swiftilities
 
-class RandomAccessCollectionTests: XCTestCase {
+final class RandomAccessCollectionTests: XCTestCase {
     
     func testMinIndex() {
         var array = [-1,9,1,8,2,7,3,6,4,5]

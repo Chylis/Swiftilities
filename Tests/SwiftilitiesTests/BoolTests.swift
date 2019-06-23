@@ -11,7 +11,7 @@ import Foundation
 import XCTest
 @testable import Swiftilities
 
-class BoolTests: XCTestCase {
+final class BoolTests: XCTestCase {
     
     func testToggled() {
         let t = true

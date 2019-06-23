@@ -9,7 +9,7 @@
 import XCTest
 @testable import Swiftilities
 
-class ArrayTests: XCTestCase {
+final class ArrayTests: XCTestCase {
     
     func testSafeSubscript() {        
         let array = [0,1,2,3,4,5,6,7,8,9,10]

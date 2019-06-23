@@ -9,7 +9,7 @@
 import XCTest
 @testable import Swiftilities
 
-class SequenceTests: XCTestCase {
+final class SequenceTests: XCTestCase {
     
     //MARK: - Accumulated
     
